@@ -13,7 +13,12 @@
     "@tanstack/react-query": "^5.77.1",
     "classnames": "^2.5.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "sass": "^1.89.0",
+    "sass-loader": "^16.0.5",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-prettier": "^5.0.3",
+    "stylelint-scss": "^6.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.27.0",

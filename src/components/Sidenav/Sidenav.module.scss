@@ -1,0 +1,35 @@
+// variables
+:root {
+  --sidenav-bg: var(--gallery-color-gray-800);
+  --sidenav-color: var(--gallery-color-gray-100);
+  --sidenav-nav-button-bg: var(--gallery-color-priamry);
+}
+
+[data-theme="dark"] {
+  --sidenav-bg: var(--gallery-color-gray-800);
+  --sidenav-color: var(--gallery-color-gray-100);
+  --sidenav-nav-button-bg: var(
+    --gallery-color-priamry
+  ); //idk if i should define same as light mode or not include in dark theme
+}
+.sidenav {
+  color: var(--sidenav-color); //all items share same property
+  &--container {
+    width: 90px;
+    height: 100svh;
+    background-color: var(--sidenav-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &--item-group {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    &-footer {
+      gap: 25px;
+    }
+  }
+}

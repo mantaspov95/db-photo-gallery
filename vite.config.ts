@@ -15,4 +15,10 @@ export default defineConfig({
       "@utils": "/src/utils",
     },
   },
+  //for vscode on wsl npm run dev restart on filesave
+  server: {
+    watch: {
+      usePolling: true,
+    },
+  },
 });

@@ -1,12 +1,13 @@
 import styles from "./Sidenav.module.scss";
 import Logo from "@assets/logo-small.svg?react";
 import HomeLogo from "@assets/icon-default.svg?react";
-import FavouritesLodo from "@assets/icon-heart.svg?react";
+import FavouritesLogo from "@assets/icon-heart.svg?react";
 import NewsletterLogo from "@assets/icon-mail.svg?react";
 import LightModeLogo from "@assets/icon-light-mode.svg?react";
 import DarkModeLogo from "@assets/icon-dark-mode.svg?react";
 
 import { useState, type ReactNode } from "react";
+import { useTheme } from "@//hooks/useTheme";
 type MenuOptionsItem = {
   name: string;
   title: string;
@@ -22,7 +23,7 @@ const MENU_OPTIONS: MenuOptionsItem[] = [
   {
     name: "favourites",
     title: "My Favourites",
-    icon: <FavouritesLodo />,
+    icon: <FavouritesLogo />,
   },
 ];
 
@@ -30,6 +31,7 @@ type NavLinksProps = {
   activeOption: MenuOptionsItem["name"];
   onLinkChange: (value: MenuOptionsItem["name"]) => void;
 };
+
 const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => {
   return (
     <nav>
@@ -53,34 +55,24 @@ const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => {
   );
 };
 
-//placeholder function. to be expanded as global util function
-const toggleTheme = () => {
-  const currentTheme: string | null = getCurrentTheme();
-  const newTheme = currentTheme === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", newTheme);
-};
-
 type FooterOptionsItem = MenuOptionsItem & {
   onClick: () => void;
 };
-const getCurrentTheme = () => {
-  return document.documentElement.getAttribute("data-theme");
-};
 
 const Footer = () => {
-  const currentTheme: string | null = getCurrentTheme();
-  const isDarkTheme: boolean = currentTheme === "dark";
+  const { toggleTheme, darkMode } = useTheme();
+
   const FooterOptions: FooterOptionsItem[] = [
     {
       name: "newsletter",
       title: "Subscribe to Newsletter",
       icon: <NewsletterLogo />,
-      onClick: () => toggleTheme(),
+      onClick: () => {}, //placeholder for newsletter callback or setIsModalOpen
     },
     {
       name: "change-theme",
-      title: `Switch to ${isDarkTheme ? " light" : "dark"} mode`,
-      icon: isDarkTheme ? <LightModeLogo /> : <DarkModeLogo />,
+      title: `Switch to ${darkMode ? " light" : "dark"} mode`,
+      icon: darkMode ? <LightModeLogo /> : <DarkModeLogo />,
       onClick: () => toggleTheme(),
     },
   ];
@@ -116,7 +108,7 @@ const Footer = () => {
 export default function Sidenav() {
   // i would consider using search params setting instead,but i guess i need router dom?
   const [activeTab, setActiveTab] = useState<MenuOptionsItem["name"]>(
-    MENU_OPTIONS[0].name
+    MENU_OPTIONS[0].name,
   );
   return (
     <aside className={`${styles.sidenav} `}>

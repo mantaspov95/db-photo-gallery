@@ -1,11 +1,13 @@
 // variables
 :root {
+  //colors
   --sidenav-bg: var(--gallery-color-gray-800);
   --sidenav-color: var(--gallery-color-gray-100);
-  //not dependent on theme
   --sidenav-nav-button-bg: var(--gallery-color-primary);
   --sidenav-nav-button-color: var(--gallery-color-white);
+  //layout
   --sidenav-padding: 30px 0;
+  //animations
   --sidenav-transition: background-color 300ms ease, color 300ms ease;
 }
 [data-theme="dark"] {

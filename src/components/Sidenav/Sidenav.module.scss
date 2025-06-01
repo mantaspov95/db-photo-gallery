@@ -2,34 +2,61 @@
 :root {
   --sidenav-bg: var(--gallery-color-gray-800);
   --sidenav-color: var(--gallery-color-gray-100);
-  --sidenav-nav-button-bg: var(--gallery-color-priamry);
+  //not dependent on theme
+  --sidenav-nav-button-bg: var(--gallery-color-primary);
+  --sidenav-nav-button-color: var(--gallery-color-white);
+  --sidenav-padding: 30px 0;
+  --sidenav-transition: background-color 300ms ease, color 300ms ease;
+}
+[data-theme="dark"] {
+  --sidenav-bg: var(--gallery-color-gray-200);
+  --sidenav-color: var(--gallery-color-white);
 }
 
-[data-theme="dark"] {
-  --sidenav-bg: var(--gallery-color-gray-800);
-  --sidenav-color: var(--gallery-color-gray-100);
-  --sidenav-nav-button-bg: var(
-    --gallery-color-priamry
-  ); //idk if i should define same as light mode or not include in dark theme
-}
 .sidenav {
   color: var(--sidenav-color); //all items share same property
-  &--container {
-    width: 90px;
-    height: 100svh;
-    background-color: var(--sidenav-bg);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  &--item-group {
+  box-sizing: border-box;
+  width: 90px;
+  height: 100svh;
+  padding: var(--sidenav-padding);
+  background-color: var(--sidenav-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--sidenav-transition);
+
+  &__item-group {
     width: 100%;
-    padding-top: 30px;
-    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     &-footer {
       gap: 25px;
+    }
+  }
+  &__item {
+    align-self: center;
+    color: inherit;
+
+    &-navlink {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: inherit;
+      padding: var(--sidenav-padding);
+
+      &:hover {
+        background: var(--gallery-color-gray-600);
+        color: var(--sidenav-nav-button-color);
+        transition: var(--sidenav-transition);
+      }
+      &.active {
+        background-color: var(--sidenav-nav-button-bg);
+        color: var(--sidenav-nav-button-color);
+      }
+    }
+    &-footer {
+      align-self: center;
     }
   }
 }

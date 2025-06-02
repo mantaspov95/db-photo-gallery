@@ -1,4 +1,6 @@
-function App() {
+import type { ReactNode } from 'react';
+
+function App(): ReactNode {
   return (
     <div>
       {/* sidebar */}

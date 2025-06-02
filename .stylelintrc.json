@@ -1,1 +1,95 @@
-{ "extends": ["stylelint-config-standard"] }
+{
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value", "stylelint-scss"],
+  "files": "src/**/*.scss",
+  "syntax": "scss",
+  "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines", "stylelint-prettier/recommended"],
+  "rules": {
+    "function-no-unknown": null,
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "debug",
+          "include",
+          "content",
+          "function",
+          "return",
+          "ignores",
+          "mixin",
+          "if",
+          "else",
+          "warn",
+          "each",
+          "for",
+          "error",
+          "append",
+          "extend"
+        ]
+      }
+    ],
+    "indentation": 2,
+    "max-nesting-depth": 3,
+    "scale-unlimited/declaration-strict-value": [
+      ["/color$/"],
+      {
+        "ignoreValues": ["transparent", "inherit"]
+      }
+    ],
+    "block-closing-brace-newline-after": [
+      "always",
+      {
+        "ignoreAtRules": ["if", "else"]
+      }
+    ],
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["after-comment", "after-declaration", "first-nested"]
+      }
+    ],
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "ignore": ["after-comment", "inside-block", "blockless-after-same-name-blockless", "blockless-after-blockless"]
+      }
+    ],
+    "selector-max-id": 0,
+    "no-descending-specificity": null,
+    "order/order": [
+      [
+        "custom-properties",
+        "dollar-variables",
+        {
+          "type": "at-rule",
+          "name": "include",
+          "hasBlock": false
+        },
+        "declarations",
+        {
+          "type": "at-rule",
+          "name": "include",
+          "hasBlock": true
+        }
+      ]
+    ],
+    "order/properties-alphabetical-order": true,
+    "function-parentheses-space-inside": "never-single-line",
+    "font-family-no-missing-generic-family-keyword": true,
+    "keyframe-declaration-no-important": null,
+    "selector-class-pattern": "[a-z]+",
+    "scss/percent-placeholder-pattern": "[a-zA-Z0-9]+",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "export"]
+      }
+    ],
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["class"]
+      }
+    ],
+    "import-notation": "string"
+  }
+}

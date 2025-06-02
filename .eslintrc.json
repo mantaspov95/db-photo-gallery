@@ -1,0 +1,89 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:lodash/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["src/graphql"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react", "@typescript-eslint", "import"],
+  "settings": {
+    "react": {
+      "version": "detect" // Tells eslint-plugin-react to automatically detect the version from your dependencies
+    }
+  },
+  "rules": {
+    "lodash/prefer-includes": "off",
+    "lodash/prefer-lodash-method": "off",
+    "lodash/prefer-constant": "off",
+    "lodash/prefer-lodash-typecheck": "off",
+    "lodash/prefer-noop": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-curly-brace-presence": "error",
+    "react/display-name": "off",
+    "arrow-body-style": ["error", "as-needed"],
+    "curly": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "eqeqeq": ["error", "always"],
+    "@typescript-eslint/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["interface", "type"]
+      },
+      {
+        "blankLine": "always",
+        "prev": ["interface", "type"],
+        "next": "*"
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "error",
+      {
+        "allowArgumentsExplicitlyTypedAsAny": true
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "import/newline-after-import": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.test.*", "*.mocks.*"],
+      "rules": {
+        "react/prop-types": "off",
+        "jest/consistent-test-it": [
+          "error",
+          {
+            "fn": "test",
+            "withinDescribe": "test"
+          }
+        ],
+        "jest-formatting/padding-around-describe-blocks": "error",
+        "jest-formatting/padding-around-test-blocks": "error",
+        "jest-formatting/padding-around-before-all-blocks": "error",
+        "jest-formatting/padding-around-after-all-blocks": "error",
+        "jest-formatting/padding-around-before-each-blocks": "error",
+        "jest-formatting/padding-around-after-each-blocks": "error",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ]
+}

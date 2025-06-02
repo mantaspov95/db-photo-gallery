@@ -1,5 +1,6 @@
 :root {
   /* **COLORS** */
+
   /* main colors */
   --gallery-color-primary: #118dba;
   --gallery-color-white: #fff;
@@ -11,8 +12,8 @@
   --gallery-color-gray-500: #707070;
   --gallery-color-gray-600: #adadad;
   --gallery-color-gray-800: #f4f4f4;
+  --gallery-color-overlay: rgb(21 21 21 / 80%);
 
-  --gallery-color-overlay: rgba(21, 21, 21, 0.8);
   /* end of colors */
 
   /* **SCREEN SIZES** */

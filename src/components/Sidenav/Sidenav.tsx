@@ -1,13 +1,14 @@
-import styles from "./Sidenav.module.scss";
-import Logo from "@assets/logo-small.svg?react";
-import HomeLogo from "@assets/icon-default.svg?react";
-import FavouritesLogo from "@assets/icon-heart.svg?react";
-import NewsletterLogo from "@assets/icon-mail.svg?react";
-import LightModeLogo from "@assets/icon-light-mode.svg?react";
-import DarkModeLogo from "@assets/icon-dark-mode.svg?react";
+import { useState, type ReactNode } from 'react';
+import Logo from '@assets/logo-small.svg?react';
+import HomeLogo from '@assets/icon-default.svg?react';
+import FavouritesLogo from '@assets/icon-heart.svg?react';
+import NewsletterLogo from '@assets/icon-mail.svg?react';
+import LightModeLogo from '@assets/icon-light-mode.svg?react';
+import DarkModeLogo from '@assets/icon-dark-mode.svg?react';
+import useTheme from '@hooks/useTheme';
 
-import { useState, type ReactNode } from "react";
-import { useTheme } from "@//hooks/useTheme";
+import styles from './Sidenav.module.scss';
+
 type MenuOptionsItem = {
   name: string;
   title: string;
@@ -16,32 +17,32 @@ type MenuOptionsItem = {
 
 const MENU_OPTIONS: MenuOptionsItem[] = [
   {
-    name: "home",
-    title: "Home",
+    name: 'home',
+    title: 'Home',
     icon: <HomeLogo />,
   },
   {
-    name: "favourites",
-    title: "My Favourites",
+    name: 'favourites',
+    title: 'My Favourites',
     icon: <FavouritesLogo />,
   },
 ];
 
 type NavLinksProps = {
-  activeOption: MenuOptionsItem["name"];
-  onLinkChange: (value: MenuOptionsItem["name"]) => void;
+  activeOption: MenuOptionsItem['name'];
+  onLinkChange: (value: MenuOptionsItem['name']) => void;
 };
 
-const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => {
+function NavLinks({ activeOption, onLinkChange }: NavLinksProps) {
   return (
     <nav>
-      <ul role="menubar" className={`${styles["sidenav__item-group"]}`}>
+      <ul role="menubar" className={`${styles['sidenav__item-group']}`}>
         {MENU_OPTIONS.map((item) => (
           <li key={item.name} title={item.title}>
             <button
               type="button"
               role="menuitem"
-              className={`   ${styles["sidenav__item-navlink"]} ${activeOption === item.name ? styles["active"] : ""}`}
+              className={`   ${styles['sidenav__item-navlink']} ${activeOption === item.name ? styles.active : ''}`}
               onClick={() => onLinkChange(item.name)}
               id={item.name}
               value={item.name}
@@ -53,48 +54,41 @@ const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => {
       </ul>
     </nav>
   );
-};
+}
 
 type FooterOptionsItem = MenuOptionsItem & {
   onClick: () => void;
 };
 
-const Footer = () => {
+function Footer() {
   const { toggleTheme, darkMode } = useTheme();
 
   const FooterOptions: FooterOptionsItem[] = [
     {
-      name: "newsletter",
-      title: "Subscribe to Newsletter",
+      name: 'newsletter',
+      title: 'Subscribe to Newsletter',
       icon: <NewsletterLogo />,
-      onClick: () => {}, //placeholder for newsletter callback or setIsModalOpen
+      onClick: () => {}, // placeholder for newsletter callback or setIsModalOpen
     },
     {
-      name: "change-theme",
-      title: `Switch to ${darkMode ? " light" : "dark"} mode`,
+      name: 'change-theme',
+      title: `Switch to ${darkMode ? ' light' : 'dark'} mode`,
       icon: darkMode ? <LightModeLogo /> : <DarkModeLogo />,
       onClick: () => toggleTheme(),
     },
   ];
   return (
     <nav>
-      <ul
-        role="menubar"
-        className={`${styles["sidenav__item-group"]} ${styles["sidenav__item-group-footer"]}`}
-      >
+      <ul role="menubar" className={`${styles['sidenav__item-group']} ${styles['sidenav__item-group-footer']}`}>
         {FooterOptions.map((item) => (
-          <li
-            key={item.name}
-            title={item.title}
-            className={`${styles["sidenav__item-footer"]}   `}
-          >
+          <li key={item.name} title={item.title} className={`${styles['sidenav__item-footer']}   `}>
             <button
               type="button"
               role="menuitem"
               onClick={item?.onClick}
               id={item.name}
               value={item.name}
-              className={`${styles["sidenav__item"]} `}
+              className={`${styles.sidenav__item} `}
             >
               {item.icon}
             </button>
@@ -103,22 +97,17 @@ const Footer = () => {
       </ul>
     </nav>
   );
-};
+}
 
-export default function Sidenav() {
+export default function Sidenav(): ReactNode {
   // i would consider using search params setting instead,but i guess i need router dom?
-  const [activeTab, setActiveTab] = useState<MenuOptionsItem["name"]>(
-    MENU_OPTIONS[0].name,
-  );
+  const [activeTab, setActiveTab] = useState<MenuOptionsItem['name']>(MENU_OPTIONS[0].name);
   return (
     <aside className={`${styles.sidenav} `}>
-      <div className={`${styles["sidenav__item-group"]}`}>
-        <Logo className={`${styles["sidenav__item"]}`} />
+      <div className={`${styles['sidenav__item-group']}`}>
+        <Logo className={`${styles.sidenav__item}`} />
       </div>
-      <NavLinks
-        activeOption={activeTab}
-        onLinkChange={(tab) => setActiveTab(tab)}
-      />
+      <NavLinks activeOption={activeTab} onLinkChange={(tab) => setActiveTab(tab)} />
       <Footer />
     </aside>
   );

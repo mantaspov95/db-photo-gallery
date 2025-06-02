@@ -1,11 +1,12 @@
-import Sidenav from "./components/Sidenav/Sidenav";
-import { ThemeProvider } from "./context/ThemeProvider";
+import type { ReactNode } from 'react';
+import Sidenav from './components/Sidenav/Sidenav';
+import ThemeProvider from './context/ThemeProvider';
 
-function App() {
+function App(): ReactNode {
   return (
     <ThemeProvider>
       <Sidenav />
-      <main></main>
+      <main />
       {/* placeholder for router? */}
     </ThemeProvider>
   );

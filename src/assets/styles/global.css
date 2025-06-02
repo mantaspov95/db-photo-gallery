@@ -9,7 +9,7 @@ ul {
 }
 
 button {
-  border: none;
-  cursor: pointer;
   background: inherit;
+  border: 0;
+  cursor: pointer;
 }

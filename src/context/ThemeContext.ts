@@ -1,8 +1,5 @@
-import { createContext } from "react";
-type ThemeContextType = {
-  darkMode: boolean;
-  toggleTheme: () => void;
-};
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined,
-);
+import { createContext } from 'react';
+import type { ThemeContextType } from './themeTypes';
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export default ThemeContext;

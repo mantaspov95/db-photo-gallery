@@ -10,7 +10,7 @@
   //animations
   --sidenav-transition: background-color 300ms ease, color 300ms ease;
 }
-[data-theme="dark"] {
+[data-theme='dark'] {
   --sidenav-bg: var(--gallery-color-gray-200);
   --sidenav-color: var(--gallery-color-white);
 }

@@ -5,6 +5,8 @@ import '@assets/styles/global.css';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App';
+import '@assets/styles/variables.scss';
+
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();

@@ -1,15 +1,15 @@
-import type { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import Sidenav from './components/Sidenav/Sidenav';
 import ThemeProvider from './context/ThemeProvider';
 
-function App(): ReactNode {
-  return (
-    <ThemeProvider>
+const App = (): ReactElement => (
+  <ThemeProvider>
+    <div style={{ width: '100vw' }}>
       <Sidenav />
       <main />
-      {/* placeholder for router? */}
-    </ThemeProvider>
-  );
-}
+    </div>
+    {/* placeholder for router? */}
+  </ThemeProvider>
+);
 
 export default App;

@@ -1,62 +1,72 @@
-// variables
+@use '/src/scss/variables/variables.scss' as *;
+
+// local variables
+$sidenav-padding: 30px 0;
+$sidenav-transition:
+  background-color 300ms ease,
+  color 300ms ease;
+
+// color theme dependencies
 :root {
-  //colors
-  --sidenav-bg: var(--gallery-color-gray-800);
-  --sidenav-color: var(--gallery-color-gray-100);
-  --sidenav-nav-button-bg: var(--gallery-color-primary);
-  --sidenav-nav-button-color: var(--gallery-color-white);
-  //layout
-  --sidenav-padding: 30px 0;
-  //animations
-  --sidenav-transition: background-color 300ms ease, color 300ms ease;
-}
-[data-theme='dark'] {
-  --sidenav-bg: var(--gallery-color-gray-200);
-  --sidenav-color: var(--gallery-color-white);
+  // variables
+  // colors
+  --sidenav-bg: #{$gallery-color-gray-800};
+  --sidenav-color: #{$gallery-color-gray-100};
+  --sidenav-nav-button-bg: #{$gallery-color-primary};
+  --sidenav-nav-button-color: #{$gallery-color-white};
+
+  &[data-theme='dark'] {
+    --sidenav-bg: #{$gallery-color-gray-200};
+    --sidenav-color: #{$gallery-color-white};
+  }
 }
 
 .sidenav {
-  color: var(--sidenav-color); //all items share same property
-  box-sizing: border-box;
-  width: 90px;
-  height: 100svh;
-  padding: var(--sidenav-padding);
   background-color: var(--sidenav-bg);
+  box-sizing: border-box;
+  color: var(--sidenav-color);
   display: flex;
   flex-direction: column;
+  height: 100svh;
   justify-content: space-between;
-  transition: var(--sidenav-transition);
+  padding: $sidenav-padding;
+  transition: $sidenav-transition;
+  width: 90px;
 
   &__item-group {
-    width: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
+
     &-footer {
       gap: 25px;
     }
   }
+
   &__item {
     align-self: center;
     color: inherit;
 
     &-navlink {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
       align-items: center;
       color: inherit;
-      padding: var(--sidenav-padding);
+      display: flex;
+      flex-direction: column;
+      padding: $sidenav-padding;
+      width: 100%;
 
       &:hover {
-        background: var(--gallery-color-gray-600);
+        background: #{$gallery-color-gray-600};
         color: var(--sidenav-nav-button-color);
-        transition: var(--sidenav-transition);
+        transition: $sidenav-transition;
       }
+
       &.active {
         background-color: var(--sidenav-nav-button-bg);
         color: var(--sidenav-nav-button-color);
       }
     }
+
     &-footer {
       align-self: center;
     }

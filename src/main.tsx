@@ -1,12 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import '@assets/styles/variables.css';
-import '@assets/styles/global.css';
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import App from './App';
-import '@assets/styles/variables.scss';
 
+import '@scss/global.scss';
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();

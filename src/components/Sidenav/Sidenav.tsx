@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useState, type ReactElement } from 'react';
 import Logo from '@assets/logo-small.svg?react';
 import HomeLogo from '@assets/icon-default.svg?react';
 import FavouritesLogo from '@assets/icon-heart.svg?react';
@@ -12,7 +12,7 @@ import styles from './Sidenav.module.scss';
 type MenuOptionsItem = {
   name: string;
   title: string;
-  icon: ReactNode;
+  icon: ReactElement;
 };
 
 const MENU_OPTIONS: MenuOptionsItem[] = [
@@ -33,34 +33,32 @@ type NavLinksProps = {
   onLinkChange: (value: MenuOptionsItem['name']) => void;
 };
 
-function NavLinks({ activeOption, onLinkChange }: NavLinksProps) {
-  return (
-    <nav>
-      <ul role="menubar" className={`${styles['sidenav__item-group']}`}>
-        {MENU_OPTIONS.map((item) => (
-          <li key={item.name} title={item.title}>
-            <button
-              type="button"
-              role="menuitem"
-              className={`   ${styles['sidenav__item-navlink']} ${activeOption === item.name ? styles.active : ''}`}
-              onClick={() => onLinkChange(item.name)}
-              id={item.name}
-              value={item.name}
-            >
-              {item.icon}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-}
+const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => (
+  <nav>
+    <ul role="menubar" className={`${styles['sidenav__item-group']}`}>
+      {MENU_OPTIONS.map((item) => (
+        <li key={item.name} title={item.title}>
+          <button
+            type="button"
+            role="menuitem"
+            className={`   ${styles['sidenav__item-navlink']} ${activeOption === item.name ? styles.active : ''}`}
+            onClick={() => onLinkChange(item.name)}
+            id={item.name}
+            value={item.name}
+          >
+            {item.icon}
+          </button>
+        </li>
+      ))}
+    </ul>
+  </nav>
+);
 
 type FooterOptionsItem = MenuOptionsItem & {
   onClick: () => void;
 };
 
-function Footer() {
+const Footer = () => {
   const { toggleTheme, darkMode } = useTheme();
 
   const FooterOptions: FooterOptionsItem[] = [
@@ -97,11 +95,13 @@ function Footer() {
       </ul>
     </nav>
   );
-}
+};
 
-export default function Sidenav(): ReactNode {
-  // i would consider using search params setting instead,but i guess i need router dom?
+const Sidenav = (): ReactElement => {
+  // placeholder hook to handle navlink change
+  // i would consider using search params or route to setting instead,but i guess i need router dom?
   const [activeTab, setActiveTab] = useState<MenuOptionsItem['name']>(MENU_OPTIONS[0].name);
+
   return (
     <aside className={`${styles.sidenav} `}>
       <div className={`${styles['sidenav__item-group']}`}>
@@ -111,4 +111,6 @@ export default function Sidenav(): ReactNode {
       <Footer />
     </aside>
   );
-}
+};
+
+export default Sidenav;

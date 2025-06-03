@@ -1,7 +1,7 @@
 import { useState, useEffect, type PropsWithChildren, type ReactElement, useMemo } from 'react';
 import ThemeContext from './ThemeContext';
 
-export default function ThemeProvider({ children }: PropsWithChildren): ReactElement {
+const ThemeProvider = ({ children }: PropsWithChildren): ReactElement => {
   const initialTheme = localStorage.getItem('theme');
   const [darkMode, setDarkMode] = useState(initialTheme === 'dark');
 
@@ -17,4 +17,6 @@ export default function ThemeProvider({ children }: PropsWithChildren): ReactEle
   }, [darkMode]);
 
   return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
-}
+};
+
+export default ThemeProvider;

@@ -1,13 +1,11 @@
-import type { ReactNode } from 'react';
+import type { ReactElement } from 'react';
 
-function App(): ReactNode {
-  return (
-    <div>
-      {/* sidebar */}
-      {/* content */}
-      {/* placeholder for router? */}
-    </div>
-  );
-}
+const App = (): ReactElement => (
+  <div style={{ width: '100vw' }}>
+    {/* sidebar */}
+    {/* content */}
+    {/* placeholder for router? */}
+  </div>
+);
 
 export default App;

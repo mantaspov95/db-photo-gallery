@@ -8,8 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "stylelint": "stylelint src/**/*.{css,module.css}",
-    "stylelint:fix": "stylelint src/**/*.{css,module.css} --fix",
+    "stylelint": "stylelint src/**/*.{scss,module.scss}",
+    "stylelint:fix": "stylelint src/**/*.{scss,module.scss} --fix",
     "pretify": "prettier . --write",
     "preview": "vite preview"
   },

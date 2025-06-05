@@ -12,6 +12,7 @@ export default defineConfig({
       '@context': '/src/context',
       '@hooks': '/src/hooks',
       '@pages': '/src/pages',
+      '@scss': '/src/scss',
       '@utils': '/src/utils',
     },
   },

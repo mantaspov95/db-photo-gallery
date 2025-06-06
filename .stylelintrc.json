@@ -1,5 +1,5 @@
 {
-  "plugins": ["stylelint-order", "stylelint-declaration-use-variable", "stylelint-scss"],
+  "plugins": ["stylelint-order", "stylelint-declaration-strict-value", "stylelint-scss"],
   "files": "src/**/*.scss",
   "syntax": "scss",
   "extends": ["stylelint-config-standard", "stylelint-config-sass-guidelines", "stylelint-prettier/recommended"],
@@ -29,12 +29,11 @@
     ],
     "indentation": 2,
     "max-nesting-depth": 3,
-    "sh-waqar/declaration-use-variable": [
-      [
-        {
-          "ignoreValues": ["transparent", "inherit"]
-        }
-      ]
+    "scale-unlimited/declaration-strict-value": [
+      ["/color$/"],
+      {
+        "ignoreValues": ["transparent", "inherit"]
+      }
     ],
     "block-closing-brace-newline-after": [
       "always",

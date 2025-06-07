@@ -7,7 +7,7 @@ import LightModeLogo from '@assets/icon-light-mode.svg?react';
 import DarkModeLogo from '@assets/icon-dark-mode.svg?react';
 import useTheme from '@hooks/useTheme';
 
-import styles from './Sidenav.module.scss';
+import styles from './sidenav.module.scss';
 
 type MenuOptionsItem = {
   name: string;
@@ -41,7 +41,7 @@ const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => (
           <button
             type="button"
             role="menuitem"
-            className={`   ${styles['sidenav__item-navlink']} ${activeOption === item.name ? styles.active : ''}`}
+            className={`${styles['sidenav__item']} ${styles['sidenav__item--navlink']} ${activeOption === item.name ? styles.active : ''}`}
             onClick={() => onLinkChange(item.name)}
             id={item.name}
             value={item.name}
@@ -77,9 +77,9 @@ const Footer = () => {
   ];
   return (
     <nav>
-      <ul role="menubar" className={`${styles['sidenav__item-group']} ${styles['sidenav__item-group-footer']}`}>
+      <ul role="menubar" className={`${styles['sidenav__item-group']} ${styles['sidenav__item-group--footer']}`}>
         {FooterOptions.map((item) => (
-          <li key={item.name} title={item.title} className={`${styles['sidenav__item-footer']}   `}>
+          <li key={item.name} title={item.title} className={`${styles['sidenav__item']} ${styles['sidenav__item--footer']}   `}>
             <button
               type="button"
               role="menuitem"

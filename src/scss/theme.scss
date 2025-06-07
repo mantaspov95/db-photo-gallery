@@ -1,0 +1,13 @@
+@use '/src/scss/variables/variables.scss' as *;
+// color theme dependencies
+:root {
+  //sidenav
+  --sidenav-bg: #{$color-gray-800};
+  --sidenav-color: #{$color-gray-100};
+
+  &[data-theme='dark'] {
+    // sidenav
+    --sidenav-bg: #{$color-gray-200};
+    --sidenav-color: #{$color-white};
+  }
+}

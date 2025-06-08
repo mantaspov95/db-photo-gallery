@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
-import Sidenav from './components/Sidenav/Sidenav';
-import ThemeProvider from './context/ThemeProvider';
 import styles from '@scss/app.module.scss';
+import Sidenav from './components/Sidenav';
+import ThemeProvider from './context/ThemeProvider';
 
 const App = (): ReactElement => (
   <ThemeProvider>

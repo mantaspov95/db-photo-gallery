@@ -1,0 +1,31 @@
+@use '/src/components/Sidenav/Sidenav.module.scss' as *;
+@use '/src/scss/variables/variables.scss' as *;
+
+//navlink colors. not dependent on theme
+$navlink-color-active: #{$color-white};
+$navlink-bg-active: #{$color-primary};
+$navlink-bg-hover: #{$color-gray-600};
+$navlink-color-hover: #{$color-white};
+.navlinks {
+  width: 100%;
+
+  &__item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: #{$sidenav-padding};
+    color: var(--sidenav-color);
+
+    &:hover {
+      background: $navlink-bg-hover;
+      color: $navlink-color-hover;
+      transition: $sidenav-transition;
+    }
+
+    &--active {
+      background-color: $navlink-bg-active;
+      color: $navlink-color-active;
+    }
+  }
+}

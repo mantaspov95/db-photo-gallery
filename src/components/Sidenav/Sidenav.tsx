@@ -1,116 +1,18 @@
-import { useState, type ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import Logo from '@assets/logo-small.svg?react';
-import HomeLogo from '@assets/icon-default.svg?react';
-import FavouritesLogo from '@assets/icon-heart.svg?react';
-import NewsletterLogo from '@assets/icon-mail.svg?react';
-import LightModeLogo from '@assets/icon-light-mode.svg?react';
-import DarkModeLogo from '@assets/icon-dark-mode.svg?react';
-import useTheme from '@hooks/useTheme';
+import classNames from 'classnames/bind';
+import styles from './Sidenav.module.scss';
+import NavLinks from './components/NavLinks';
+import Footer from './components/Footer';
 
-import styles from './sidenav.module.scss';
+const cx = classNames.bind(styles);
 
-type MenuOptionsItem = {
-  name: string;
-  title: string;
-  icon: ReactElement;
-};
-
-const MENU_OPTIONS: MenuOptionsItem[] = [
-  {
-    name: 'home',
-    title: 'Home',
-    icon: <HomeLogo />,
-  },
-  {
-    name: 'favourites',
-    title: 'My Favourites',
-    icon: <FavouritesLogo />,
-  },
-];
-
-type NavLinksProps = {
-  activeOption: MenuOptionsItem['name'];
-  onLinkChange: (value: MenuOptionsItem['name']) => void;
-};
-
-const NavLinks = ({ activeOption, onLinkChange }: NavLinksProps) => (
-  <nav>
-    <ul role="menubar" className={`${styles['sidenav__item-group']}`}>
-      {MENU_OPTIONS.map((item) => (
-        <li key={item.name} title={item.title}>
-          <button
-            type="button"
-            role="menuitem"
-            className={`${styles['sidenav__item']} ${styles['sidenav__item--navlink']} ${activeOption === item.name ? styles.active : ''}`}
-            onClick={() => onLinkChange(item.name)}
-            id={item.name}
-            value={item.name}
-          >
-            {item.icon}
-          </button>
-        </li>
-      ))}
-    </ul>
-  </nav>
+const Sidenav = (): ReactElement => (
+  <aside className={cx('sidenav')}>
+    <Logo />
+    <NavLinks />
+    <Footer />
+  </aside>
 );
-
-type FooterOptionsItem = MenuOptionsItem & {
-  onClick: () => void;
-};
-
-const Footer = () => {
-  const { toggleTheme, darkMode } = useTheme();
-
-  const FooterOptions: FooterOptionsItem[] = [
-    {
-      name: 'newsletter',
-      title: 'Subscribe to Newsletter',
-      icon: <NewsletterLogo />,
-      onClick: () => {}, // placeholder for newsletter callback or setIsModalOpen
-    },
-    {
-      name: 'change-theme',
-      title: `Switch to ${darkMode ? ' light' : 'dark'} mode`,
-      icon: darkMode ? <LightModeLogo /> : <DarkModeLogo />,
-      onClick: () => toggleTheme(),
-    },
-  ];
-  return (
-    <nav>
-      <ul role="menubar" className={`${styles['sidenav__item-group']} ${styles['sidenav__item-group--footer']}`}>
-        {FooterOptions.map((item) => (
-          <li key={item.name} title={item.title} className={`${styles['sidenav__item']} ${styles['sidenav__item--footer']}   `}>
-            <button
-              type="button"
-              role="menuitem"
-              onClick={item?.onClick}
-              id={item.name}
-              value={item.name}
-              className={`${styles.sidenav__item} `}
-            >
-              {item.icon}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
-
-const Sidenav = (): ReactElement => {
-  // placeholder hook to handle navlink change
-  // i would consider using search params or route to setting instead,but i guess i need router dom?
-  const [activeTab, setActiveTab] = useState<MenuOptionsItem['name']>(MENU_OPTIONS[0].name);
-
-  return (
-    <aside className={`${styles.sidenav} `}>
-      <div className={`${styles['sidenav__item-group']}`}>
-        <Logo className={`${styles.sidenav__item}`} />
-      </div>
-      <NavLinks activeOption={activeTab} onLinkChange={(tab) => setActiveTab(tab)} />
-      <Footer />
-    </aside>
-  );
-};
 
 export default Sidenav;

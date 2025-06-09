@@ -7,14 +7,14 @@ $sidenav-transition:
   color 300ms ease;
 
 .sidenav {
+  align-items: center;
   background-color: var(--sidenav-bg);
-  color: var(--sidenav-color);
   box-sizing: border-box;
+  color: var(--sidenav-color);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 100svh;
+  justify-content: space-between;
   padding: $sidenav-padding;
   width: utils.rem(90);
-  align-items: center;
 }

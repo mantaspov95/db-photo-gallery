@@ -6,16 +6,17 @@ $navlink-color-active: #{$color-white};
 $navlink-bg-active: #{$color-primary};
 $navlink-bg-hover: #{$color-gray-600};
 $navlink-color-hover: #{$color-white};
+
 .navlinks {
   width: 100%;
 
   &__item {
-    width: 100%;
-    display: flex;
     align-items: center;
+    color: var(--sidenav-color);
+    display: flex;
     justify-content: center;
     padding: #{$sidenav-padding};
-    color: var(--sidenav-color);
+    width: 100%;
 
     &:hover {
       background: $navlink-bg-hover;

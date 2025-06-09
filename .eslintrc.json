@@ -38,6 +38,15 @@
     "curly": "error",
     "react-hooks/exhaustive-deps": "off",
     "eqeqeq": ["error", "always"],
+    "import/prefer-default-export": "off",
+    // https://github.com/airbnb/javascript/issues/2500#issuecomment-1197665962
+    // prevent export {default} from in index.ts to mark as error
+    "no-restricted-exports": [
+      "error",
+      {
+        "restrictedNamedExports": ["then"]
+      }
+    ],
     "@typescript-eslint/padding-line-between-statements": [
       "error",
       {

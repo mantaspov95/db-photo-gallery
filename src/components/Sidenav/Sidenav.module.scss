@@ -1,0 +1,20 @@
+@use '/src/scss/utils/utils.scss' as utils;
+
+// local variables
+$sidenav-padding: (utils.rem(30) 0);
+$sidenav-transition:
+  background-color 300ms ease,
+  color 300ms ease;
+
+.sidenav {
+  align-items: center;
+  background-color: var(--sidenav-bg);
+  box-sizing: border-box;
+  color: var(--sidenav-color);
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  justify-content: space-between;
+  padding: $sidenav-padding;
+  width: utils.rem(90);
+}

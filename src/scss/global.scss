@@ -1,0 +1,15 @@
+body {
+  margin: 0; /* removes default 8px margin */
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: inherit;
+  border: 0;
+  cursor: pointer;
+}

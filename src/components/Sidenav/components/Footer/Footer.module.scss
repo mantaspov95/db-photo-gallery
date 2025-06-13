@@ -1,5 +1,6 @@
 @use '/src/scss/utils/utils.scss' as utils;
 @use '/src/components/Sidenav/Sidenav.module.scss' as *;
+
 .footer {
   display: flex;
   flex-direction: column;

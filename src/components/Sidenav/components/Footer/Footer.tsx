@@ -1,28 +1,23 @@
 import useTheme from '@hooks/useTheme';
 import classNames from 'classnames/bind';
-import type { ReactElement } from 'react';
+import { type ReactElement } from 'react';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
 
+const cx = classNames.bind(styles);
+
 const Footer = (): ReactElement => {
   const { toggleTheme, darkMode } = useTheme();
-  const FOOTER_OPTIONS = getFooterOptions(darkMode, toggleTheme);
+  const footerOptions = getFooterOptions(darkMode, toggleTheme);
 
-  const cx = classNames.bind(styles);
   return (
-    <nav>
-      <ul role="menubar" className={cx('footer')}>
-        {FOOTER_OPTIONS.map((item) => {
+    <nav aria-label="Footer Navigation">
+      <ul className={cx('footer')} role="menubar">
+        {footerOptions.map((item) => {
           const Icon = item.icon;
           return (
-            <li key={item.name} title={item.title}>
-              <button
-                type="button"
-                role="menuitem"
-                onClick={item?.onClick}
-                value={item.name}
-                className={cx('footer__item')}
-              >
+            <li key={item.name} aria-label={item.title} role="menuitem">
+              <button type="button" title={item.title} onClick={item.onClick} className={cx('footer__item')}>
                 <Icon />
               </button>
             </li>

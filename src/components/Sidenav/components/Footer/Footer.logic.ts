@@ -8,7 +8,7 @@ export const getFooterOptions = (darkMode: boolean, toggleTheme: () => void): Fo
     name: 'newsletter',
     title: 'Subscribe to Newsletter',
     icon: NewsletterLogo,
-    onClick: () => {}, // placeholder for newsletter callback or setIsModalOpen
+    onClick: () => {}, // TODO: placeholder for newsletter callback or setIsModalOpen
   },
   {
     name: 'change-theme',

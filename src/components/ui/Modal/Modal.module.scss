@@ -1,0 +1,10 @@
+@use '@scss/variables/variables' as *;
+
+//local variables
+$backdrop-color: #{$color-overlay};
+
+.modal {
+  &::backdrop {
+    background-color: $backdrop-color;
+  }
+}

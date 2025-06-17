@@ -1,0 +1,11 @@
+@use '@scss/variables/variables' as *;
+@use '/src/scss/utils/utils.scss' as utils;
+
+$button-color: #{$color-gray-500};
+
+.modal-close-button {
+  width: utils.rem(24);
+  height: utils.rem(24);
+  padding: 0;
+  color: $button-color;
+}

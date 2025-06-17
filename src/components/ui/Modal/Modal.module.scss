@@ -2,9 +2,16 @@
 
 //local variables
 $backdrop-color: #{$color-overlay};
-
+$backdrop-blur: #{$bg-blur-20};
+$bg-color: #{$color-gray-100};
+$color: #{$color-white};
 .modal {
+  background-color: $bg-color;
+  color: $color;
+  height:500px;
+
   &::backdrop {
     background-color: $backdrop-color;
+    backdrop-filter: $backdrop-blur;
   }
 }

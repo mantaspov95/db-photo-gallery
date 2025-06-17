@@ -12,7 +12,6 @@ const App = (): ReactElement => (
       <Sidenav />
       <main />
     </div>
-    {/* TODO: placeholder for router? */}
   </ThemeProvider>
 );
 

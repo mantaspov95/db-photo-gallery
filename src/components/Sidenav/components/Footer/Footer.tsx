@@ -3,16 +3,16 @@ import classNames from 'classnames/bind';
 import { useState, type ReactElement } from 'react';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
-import Modal from '@components/ui/Modal';
+import NewsletterModal from '@components/NewsletterModal';
 
 const cx = classNames.bind(styles);
 
 const Footer = (): ReactElement => {
   const { toggleTheme, darkMode } = useTheme();
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [isOpenNewsletterModal, setIsOpenNewsletterModal] = useState<boolean>(false);
 
   const openNewsletterModal = () => {
-    setIsOpenModal(true);
+    setIsOpenNewsletterModal(true);
   };
 
   const footerOptions = getFooterOptions(darkMode, toggleTheme, openNewsletterModal);
@@ -33,9 +33,7 @@ const Footer = (): ReactElement => {
           })}
         </ul>
       </nav>
-      <Modal isOpen={isOpenModal} onClose={() => setIsOpenModal(false)}>
-        <div>hello</div>
-      </Modal>
+      <NewsletterModal isOpen={isOpenNewsletterModal} onClose={() => setIsOpenNewsletterModal(false)} />
     </div>
   );
 };

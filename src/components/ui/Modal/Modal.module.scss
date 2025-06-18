@@ -5,13 +5,32 @@ $backdrop-color: #{$color-overlay};
 $backdrop-blur: #{$bg-blur-20};
 $bg-color: #{$color-gray-100};
 $color: #{$color-white};
+
+@mixin fade-in-transition($duration: 0.25s, $timing: ease-in-out) {
+  opacity: 1;
+  transition: opacity $duration $timing;
+}
+
 .modal {
   background-color: $bg-color;
   color: $color;
-  height:500px;
+  &[open] {
+    @include fade-in-transition;
+  }
 
   &::backdrop {
     background-color: $backdrop-color;
     backdrop-filter: $backdrop-blur;
+    @include fade-in-transition;
+  }
+
+  @starting-style {
+    &[open] {
+      opacity: 0;
+    }
+
+    &::backdrop {
+      opacity: 0;
+    }
   }
 }

@@ -1,26 +1,22 @@
 import classNames from 'classnames/bind';
-import { useEffect, useRef, type PropsWithChildren, type SyntheticEvent } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './Modal.module.scss';
-import ModalCloseButton from './components/CloseButton';
+import ModalContext from './context/ModalContext';
+import ModalBody from './components/ModalBody';
+import { closeModal, openModal } from './Modal.logic';
+import type { ModalProps } from './Modal.types';
 
 const cx = classNames.bind(styles);
 
 // https://clhenrick.io/blog/react-a11y-modal-dialog/
-type ModalProps = PropsWithChildren & {
-  isOpen: boolean;
-  onClose?: (event?: SyntheticEvent) => void;
-};
-
-// prevents calling dialog.showModal() when it is already visible
-const safelyOpenDialogAsModal = (dialog: HTMLDialogElement | null) => {
-  if (dialog && !dialog.open) {
-    dialog.showModal();
-  }
-};
-
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialog = dialogRef?.current;
+  const contextValue = {
+    close: () => {
+      closeModal(dialog);
+    },
+  };
 
   // syncs the dialog's `open` property with React `isOpen` state
   useEffect(() => {
@@ -29,32 +25,33 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     const handleBackdropClick = (event: Event) => {
       const { target } = event;
       if (target instanceof Element && target.nodeName === 'DIALOG') {
-        dialog.close();
+        closeModal(dialog);
       }
     };
 
-    const cleanup = () => {
-      dialog.removeEventListener('click', handleBackdropClick);
-      dialog.close();
-    };
-
+    // when parent changes state to trigger native dialog functions
     if (isOpen) {
-      safelyOpenDialogAsModal(dialog);
+      openModal(dialog);
     } else {
-      dialog.close();
+      closeModal(dialog);
     }
-
+    // outside(backdrop) click event listener
     dialog.addEventListener('click', handleBackdropClick);
 
-    return cleanup;
+    return () => {
+      dialog.removeEventListener('click', handleBackdropClick);
+      closeModal(dialog); // ensure modal is closed on cleanup
+    };
   }, [isOpen]);
 
   return (
     <dialog ref={dialogRef} onClose={onClose} className={cx('modal')} style={{ width: '100px' }}>
-      <ModalCloseButton onClose={() => dialog?.close()} />
-      {children}
+      <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>
   );
 };
+
+// assigning as subcomponent for clarity
+Modal.Body = ModalBody;
 
 export default Modal;

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import styles from './Modal.module.scss';
 import ModalContext from './context/ModalContext';
 import ModalBody from './components/ModalBody';
@@ -12,11 +12,14 @@ const cx = classNames.bind(styles);
 const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialog = dialogRef?.current;
-  const contextValue = {
-    close: () => {
-      closeModal(dialog);
-    },
-  };
+  const contextValue = useMemo(
+    () => ({
+      close: () => {
+        closeModal(dialog);
+      },
+    }),
+    []
+  );
 
   // syncs the dialog's `open` property with React `isOpen` state
   useEffect(() => {
@@ -45,7 +48,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')} style={{ width: '100px' }}>
+    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')}>
       <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>
   );

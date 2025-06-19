@@ -1,0 +1,11 @@
+@use '/src/scss/utils/utils.scss' as utils;
+@use '/src/scss/variables/variables.scss' as *;
+
+$button-padding: utils.rem(12) utils.rem(32);
+$button-primary-bg-color: #{$color-primary};
+.button {
+  padding: $button-padding;
+  &--primary{
+    background-color: $button-primary-bg-color;
+  }
+}

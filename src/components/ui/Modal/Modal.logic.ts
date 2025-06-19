@@ -1,9 +1,9 @@
 // prevents calling dialog.showModal() when it is already visible
-export const openModal = (dialog: HTMLDialogElement | null) => {
+export const openModal = (dialog: HTMLDialogElement | null): void => {
   if (dialog && !dialog.open) {
     dialog.showModal();
   }
 };
-export const closeModal = (dialog: HTMLDialogElement | null) => {
+export const closeModal = (dialog: HTMLDialogElement | null): void => {
   dialog?.close();
 };

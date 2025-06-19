@@ -1,9 +1,6 @@
-import { createContext } from "react";
+import { createContext } from 'react';
+import type { ModalContextType } from './ModalContext.types';
 
-type ModalContextProps = {
-  close: () => void;
-};
-
-const ModalContext = createContext<ModalContextProps | undefined> (undefined);
+const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
 export default ModalContext;

@@ -1,9 +1,9 @@
 import useTheme from '@hooks/useTheme';
 import classNames from 'classnames/bind';
 import { useState, type ReactElement } from 'react';
+import NewsletterModal from '@components/NewsletterModal';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
-import NewsletterModal from '@components/NewsletterModal';
 
 const cx = classNames.bind(styles);
 

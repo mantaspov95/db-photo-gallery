@@ -18,16 +18,22 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
         closeModal(dialog);
       },
     }),
-    []
+    [dialog]
   );
 
   // syncs the dialog's `open` property with React `isOpen` state
   useEffect(() => {
     if (!dialog) return;
 
-    const handleBackdropClick = (event: Event) => {
-      const { target } = event;
-      if (target instanceof Element && target.nodeName === 'DIALOG') {
+    // https://stackoverflow.com/a/26984690
+    const handleBackdropClick = (event: MouseEvent) => {
+      const rect = dialog.getBoundingClientRect();
+      const isInDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+      if (!isInDialog) {
         closeModal(dialog);
       }
     };
@@ -38,11 +44,12 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     } else {
       closeModal(dialog);
     }
-    // outside(backdrop) click event listener
-    dialog.addEventListener('click', handleBackdropClick);
+    // mousedown instead of click to prevent enter keyboard press to act as click
+    // outside(backdrop) mousedown event listener
+    dialog.addEventListener('mousedown', handleBackdropClick);
 
     return () => {
-      dialog.removeEventListener('click', handleBackdropClick);
+      dialog.removeEventListener('mousedown', handleBackdropClick);
       closeModal(dialog); // ensure modal is closed on cleanup
     };
   }, [isOpen]);

@@ -1,0 +1,11 @@
+@mixin transition($type, $duration: 0.25s, $timing: ease-in-out) {
+  transition: $type $duration $timing;
+}
+
+@mixin fade-in-transition($duration: 0.25s, $timing: ease-in-out) {
+  transition: opacity $duration $timing;
+}
+
+@mixin background-color-transition($duration: 0.25s, $timing: ease-in-out) {
+  transition: background-color $duration $timing;
+}

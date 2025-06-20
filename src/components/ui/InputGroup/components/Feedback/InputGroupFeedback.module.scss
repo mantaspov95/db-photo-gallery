@@ -1,0 +1,12 @@
+@use '/src/scss/variables/variables.scss' as *;
+
+$feedback-error-color: #{$color-text-error};
+.input-group-feedback {
+  opacity: 0;
+  &--visible {
+    opacity: 1;
+  }
+  &--error {
+    color: $feedback-error-color;
+  }
+}

@@ -1,0 +1,26 @@
+@use '/src/scss/utils/utils.scss' as func;
+@use '/src/scss/variables/variables.scss' as *;
+
+$container-width: func.rem(490);
+$heading-font-size: func.rem(20);
+$heading-font-weight: 400;
+$heading-margin: 0 0 func.rem(40) 0;
+$error-message-color: #{$color-text-error};
+.newsletter-modal {
+  width: $container-width;
+  max-width: 100%; // if screen size is smaller when block width prevent from overflow
+  &__heading {
+    margin: $heading-margin;
+    font-size: $heading-font-size;
+    font-weight: $heading-font-weight;
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: func.rem(24);
+  }
+  &__error-message {
+    color: $error-message-color;
+  }
+}

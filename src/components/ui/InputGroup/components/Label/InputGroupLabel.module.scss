@@ -1,0 +1,6 @@
+@use '/src/scss/variables/variables.scss' as *;
+
+$label-color: #{$color-gray-600};
+.input-group-label {
+  color: $label-color;
+}

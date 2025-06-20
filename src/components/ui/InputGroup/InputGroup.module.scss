@@ -1,0 +1,10 @@
+@use '/src/scss/utils/utils.scss' as func;
+
+$content-spacing: func.rem(16);
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $content-spacing;
+  width:100%; // grows to container limit by default
+}

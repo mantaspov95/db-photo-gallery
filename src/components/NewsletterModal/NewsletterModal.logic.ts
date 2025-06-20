@@ -1,0 +1,16 @@
+import type { NewsletterFormData } from './NewsletterModal.types';
+import { NEWSLETTER_FORM_VALIDATION_RULES } from './NewsletterModal.constants';
+
+export const validateNewsletterForm = (formData: NewsletterFormData): Partial<NewsletterFormData> => {
+  return (Object.keys(formData) as (keyof NewsletterFormData)[]).reduce<Partial<NewsletterFormData>>((errors, key) => {
+    const matchingValidationRule = NEWSLETTER_FORM_VALIDATION_RULES.find((rule) => rule.name === key);
+    const error = matchingValidationRule ? matchingValidationRule.validation(formData[key]) : null;
+
+    // if error exists add property and value to object
+    if (error) {
+      errors[key] = error;
+    }
+
+    return errors;
+  }, {});
+};

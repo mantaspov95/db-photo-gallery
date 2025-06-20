@@ -1,27 +1,28 @@
-@use '@scss/variables/variables' as *;
+@use '/src/scss/variables/variables' as *;
+@use '@scss/mixins/mixins' as mixins;
 
 //local variables
 $backdrop-color: #{$color-overlay};
 $backdrop-blur: #{$bg-blur-20};
 $bg-color: #{$color-gray-100};
 $color: #{$color-white};
-
-@mixin fade-in-transition($duration: 0.25s, $timing: ease-in-out) {
-  opacity: 1;
-  transition: opacity $duration $timing;
-}
+$mobile-screen-size: #{$screen-size-sm};
+$mobile-screen-modal-width: 100vw;
+$mobile-scrren-modal-height: 100svh;
 
 .modal {
   background-color: $bg-color;
   color: $color;
   &[open] {
-    @include fade-in-transition;
+    opacity: 1;
+    @include mixins.fade-in-transition;
   }
 
   &::backdrop {
     background-color: $backdrop-color;
     backdrop-filter: $backdrop-blur;
-    @include fade-in-transition;
+    opacity: 1;
+    @include mixins.fade-in-transition;
   }
 
   @starting-style {
@@ -31,6 +32,15 @@ $color: #{$color-white};
 
     &::backdrop {
       opacity: 0;
+    }
+  }
+  // when screen size is mobile - modal is fullscreen
+  @media (max-width: $mobile-screen-size) {
+    & {
+      width: $mobile-screen-modal-width;
+      max-width: $mobile-screen-modal-width;
+      height: $mobile-scrren-modal-height;
+      max-height: $mobile-scrren-modal-height;
     }
   }
 }

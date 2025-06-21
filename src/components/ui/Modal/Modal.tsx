@@ -54,7 +54,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')} aria-modal={isOpen}>
+    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')}>
       <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>
   );

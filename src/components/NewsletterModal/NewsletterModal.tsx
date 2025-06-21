@@ -38,7 +38,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <Modal.Body>
         <div className={cx('newsletter-modal')}>
-          <h1 className={cx('newsletter-modal__heading')}>Subscribe to our newsletter</h1>
+          <h2 className={cx('newsletter-modal__heading')}>Subscribe to our newsletter</h2>
           <form
             className={cx('newsletter-modal__content')}
             onSubmit={(e) => {

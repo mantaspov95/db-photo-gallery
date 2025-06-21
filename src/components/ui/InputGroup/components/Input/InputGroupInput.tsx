@@ -1,11 +1,13 @@
 import classNames from 'classnames/bind';
+import type { InputHTMLAttributes, ReactElement } from 'react';
 import styles from './InputGroupInput.module.scss';
-import type { InputHTMLAttributes } from 'react';
 import useInputGroup from '../../hooks/useInputGroup';
 
 const cx = classNames.bind(styles);
-type InputGroupInput = InputHTMLAttributes<HTMLInputElement>;
-const InputGroupInput = ({ ...restProps }: InputGroupInput) => {
+
+type InputGroupInputProps = InputHTMLAttributes<HTMLInputElement>;
+
+const InputGroupInput = ({ ...restProps }: InputGroupInputProps): ReactElement => {
   const { isError } = useInputGroup();
   return (
     <input

@@ -15,7 +15,7 @@ const ModalBody = ({ className, children }: ModalBodyProps): ReactElement => {
   const { close } = useModal();
   return (
     <div className={cx('modal-body', className)}>
-      <CloseButton onClose={() => close()} className={cx('modal-body--close-button')} aria-label="Close modal"/>
+      <CloseButton onClose={() => close()} className={cx('modal-body--close-button')} aria-label="Close modal" />
       {children}
     </div>
   );

@@ -5,14 +5,16 @@
 $content-spacing: func.rem(8);
 $font-size: func.rem(14);
 $feedback-error-color: #{$color-text-error};
+
 .input-group-feedback {
-  opacity: 0;
   font-size: $font-size;
+  opacity: 0;
 
   &--visible {
-    padding-top: $content-spacing;
     opacity: 1;
+    padding-top: $content-spacing;
   }
+
   &--error {
     color: $feedback-error-color;
   }

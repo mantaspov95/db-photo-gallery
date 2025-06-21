@@ -1,1 +1,1 @@
-export {default} from "./InputGroupLabel"
+export { default } from './InputGroupLabel';

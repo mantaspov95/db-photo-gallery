@@ -1,1 +1,1 @@
-export {default} from "./InputGroupInput"
+export { default } from './InputGroupInput';

@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap';
 
 html {
-  font-family: 'Sen', Arial, sans-serif;
+  font-family: Sen, Arial, sans-serif;
 }
+
 body {
   margin: 0; /* removes default 8px margin */
 }
@@ -18,10 +19,9 @@ button {
   border: 0;
   cursor: pointer;
   font-family: inherit;
-  
 }
 
 dialog {
-  padding: 0;
   border: none;
+  padding: 0;
 }

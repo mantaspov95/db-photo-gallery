@@ -5,12 +5,12 @@ $close-button-color: #{$color-gray-500};
 $close-button-color-hover: #{$color-white};
 
 .close-button {
-  width: utils.rem(24);
+  color: $close-button-color;
   height: utils.rem(24);
   padding: 0;
-  color: $close-button-color;
-  &:hover{
+  width: utils.rem(24);
+
+  &:hover {
     color: $close-button-color-hover;
   }
-
 }

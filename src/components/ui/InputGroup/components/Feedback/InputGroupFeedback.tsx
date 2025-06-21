@@ -1,12 +1,13 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react';
+import type { HTMLAttributes, PropsWithChildren, ReactElement } from 'react';
+import classNames from 'classnames/bind';
 import useInputGroup from '../../hooks/useInputGroup';
 import styles from './InputGroupFeedback.module.scss';
-import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
 
 type InputGroupFeedbackProps = Omit<HTMLAttributes<HTMLSpanElement>, 'className' | 'role'> & PropsWithChildren; // i prefer excluding role from props because it could be handled by function internally
-const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps) => {
+
+const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps): ReactElement => {
   const { isError } = useInputGroup(); // can expand with isSuccess, isWarning and so on, or variant = name if needed
   return (
     <span

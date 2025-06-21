@@ -1,9 +1,9 @@
 import Button from '@components/ui/Button';
 import Modal, { type ModalProps } from '@components/ui/Modal';
-import { useState, type ReactElement } from 'react';
-import styles from './NewsletterModal.module.scss';
+import { useId, useState, type ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import InputGroup from '@components/ui/InputGroup';
+import styles from './NewsletterModal.module.scss';
 import { getErrorLabelId, validateNewsletterForm } from './NewsletterModal.logic';
 import type { NewsletterFormData } from './NewsletterModal.types';
 import { INITIAL_NEWSLETTER_FORM_DATA } from './NewsletterModal.constants';
@@ -15,6 +15,8 @@ const NAME_ERROR_ID = getErrorLabelId(NewsletterFormFields.NAME);
 const EMAIL_ERROR_ID = getErrorLabelId(NewsletterFormFields.EMAIL);
 
 const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
+  const accNameId = useId(); // https://clhenrick.io/blog/react-a11y-modal-dialog/
+
   const [formData, setFormData] = useState(INITIAL_NEWSLETTER_FORM_DATA);
   const [errors, setErrors] = useState<Partial<NewsletterFormData>>({});
 
@@ -35,10 +37,12 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} aria-label={accNameId}>
       <Modal.Body>
         <div className={cx('newsletter-modal')}>
-          <h2 className={cx('newsletter-modal__heading')}>Subscribe to our newsletter</h2>
+          <h2 className={cx('newsletter-modal__heading')} id={accNameId}>
+            Subscribe to our newsletter
+          </h2>
           <form
             className={cx('newsletter-modal__content')}
             onSubmit={(e) => {

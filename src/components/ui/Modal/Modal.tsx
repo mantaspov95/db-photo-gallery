@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, type ReactElement } from 'react';
 import styles from './Modal.module.scss';
 import ModalContext from './context/ModalContext';
 import ModalBody from './components/ModalBody';
@@ -9,7 +9,7 @@ import type { ModalProps } from './Modal.types';
 const cx = classNames.bind(styles);
 
 // https://clhenrick.io/blog/react-a11y-modal-dialog/
-const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialog = dialogRef?.current;
   const contextValue = useMemo(
@@ -22,7 +22,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   );
   // syncs the dialog's `open` property with React `isOpen` state
   useEffect(() => {
-    if (!dialog) return;
+    if (!dialog) return undefined;
 
     // https://stackoverflow.com/a/26984690
     const handleBackdropClick = (event: MouseEvent) => {
@@ -54,7 +54,15 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')}>
+    <dialog
+      ref={dialogRef}
+      onClose={onClose}
+      className={cx('modal')}
+      aria-labelledby={props['aria-labelledby']}
+      aria-label={props['aria-label']}
+      aria-describedby={props['aria-describedby']}
+      aria-description={props['aria-description']}
+    >
       <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>
   );

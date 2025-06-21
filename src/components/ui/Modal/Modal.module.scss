@@ -15,15 +15,17 @@ $mobile-scrren-modal-height: 100svh;
   color: $color;
 
   &[open] {
-    opacity: 1;
     @include mixins.fade-in-transition;
+
+    opacity: 1;
   }
 
   &::backdrop {
-    background-color: $backdrop-color;
-    backdrop-filter: $backdrop-blur;
-    opacity: 1;
     @include mixins.fade-in-transition;
+
+    backdrop-filter: $backdrop-blur;
+    background-color: $backdrop-color;
+    opacity: 1;
   }
 
   @starting-style {
@@ -38,10 +40,10 @@ $mobile-scrren-modal-height: 100svh;
   // when screen size is mobile - modal is fullscreen
   @media (max-width: $mobile-screen-size) {
     & {
-      width: $mobile-screen-modal-width;
-      max-width: $mobile-screen-modal-width;
       height: $mobile-scrren-modal-height;
       max-height: $mobile-scrren-modal-height;
+      max-width: $mobile-screen-modal-width;
+      width: $mobile-screen-modal-width;
     }
   }
 }

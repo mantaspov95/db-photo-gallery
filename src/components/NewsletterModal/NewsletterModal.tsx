@@ -4,11 +4,15 @@ import { useState, type ReactElement } from 'react';
 import styles from './NewsletterModal.module.scss';
 import classNames from 'classnames/bind';
 import InputGroup from '@components/ui/InputGroup';
-import { validateNewsletterForm } from './NewsletterModal.logic';
+import { getErrorLabelId, validateNewsletterForm } from './NewsletterModal.logic';
 import type { NewsletterFormData } from './NewsletterModal.types';
 import { INITIAL_NEWSLETTER_FORM_DATA } from './NewsletterModal.constants';
+import { NewsletterFormFields } from './NewsletterModal.enums';
 
 const cx = classNames.bind(styles);
+
+const NAME_ERROR_ID = getErrorLabelId(NewsletterFormFields.NAME);
+const EMAIL_ERROR_ID = getErrorLabelId(NewsletterFormFields.EMAIL);
 
 const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
   const [formData, setFormData] = useState(INITIAL_NEWSLETTER_FORM_DATA);
@@ -42,23 +46,29 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               handleSubmit();
             }}
           >
+            {/* this could be made into .map to DRY but it's only 2 fields and not likely to change */}
             <InputGroup isError={Boolean(errors?.name)}>
-              <InputGroup.Label>Your name</InputGroup.Label>
+              <InputGroup.Label htmlFor={NewsletterFormFields.NAME}>Your name</InputGroup.Label>
               <InputGroup.Input
+                autoComplete="name"
+                id={NewsletterFormFields.NAME}
                 value={formData.name}
                 onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                aria-describedby={NAME_ERROR_ID}
               />
-              <InputGroup.Feedback>{errors?.name}</InputGroup.Feedback>
+              <InputGroup.Feedback id={NAME_ERROR_ID}>{errors?.name}</InputGroup.Feedback>
             </InputGroup>
             <InputGroup isError={Boolean(errors?.email)}>
-              <InputGroup.Label>Your email address</InputGroup.Label>
+              <InputGroup.Label htmlFor={NewsletterFormFields.EMAIL}>Your email address</InputGroup.Label>
               <InputGroup.Input
+                id={NewsletterFormFields.EMAIL}
                 type="email"
+                autoComplete="email"
                 value={formData.email}
                 onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                aria-describedby={EMAIL_ERROR_ID}
               />
-                            <InputGroup.Feedback>{errors?.email}</InputGroup.Feedback>
-
+              <InputGroup.Feedback id={EMAIL_ERROR_ID}>{errors?.email}</InputGroup.Feedback>
             </InputGroup>
             <Button type="submit">SUBSCRIBE</Button>
           </form>

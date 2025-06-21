@@ -1,11 +1,15 @@
-import type { PropsWithChildren } from 'react';
+import type {  LabelHTMLAttributes, PropsWithChildren } from 'react';
 import styles from './InputGroupLabel.module.scss';
 import classNames from 'classnames/bind';
 
 const cx = classNames.bind(styles);
-
-const InputGroupLabel = ({ children }: PropsWithChildren) => {
-  return <label className={cx('input-group-label')}>{children}</label>;
+type InputGroupLabelProps = LabelHTMLAttributes<HTMLLabelElement> & PropsWithChildren;
+const InputGroupLabel = ({ children, ...restProps }: InputGroupLabelProps) => {
+  return (
+    <label {...restProps} className={cx('input-group-label', restProps?.className)}>
+      {children}
+    </label>
+  );
 };
 
 export default InputGroupLabel;

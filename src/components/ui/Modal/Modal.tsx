@@ -20,7 +20,6 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     }),
     [dialog]
   );
-
   // syncs the dialog's `open` property with React `isOpen` state
   useEffect(() => {
     if (!dialog) return;
@@ -55,7 +54,7 @@ const Modal = ({ isOpen, onClose, children }: ModalProps) => {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')}>
+    <dialog ref={dialogRef} onClose={onClose} className={cx('modal')} aria-modal={isOpen}>
       <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>
   );

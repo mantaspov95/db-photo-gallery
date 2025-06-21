@@ -13,6 +13,7 @@ $mobile-scrren-modal-height: 100svh;
 .modal {
   background-color: $bg-color;
   color: $color;
+
   &[open] {
     opacity: 1;
     @include mixins.fade-in-transition;

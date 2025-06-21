@@ -1,9 +1,16 @@
 @use '/src/scss/variables/variables.scss' as *;
+@use '/src/scss/utils/utils.scss' as func;
+@use '/src/scss/mixins/mixins.scss' as mixins;
 
+$content-spacing: func.rem(8);
+$font-size: func.rem(14);
 $feedback-error-color: #{$color-text-error};
 .input-group-feedback {
   opacity: 0;
+  font-size: $font-size;
+
   &--visible {
+    padding-top: $content-spacing;
     opacity: 1;
   }
   &--error {

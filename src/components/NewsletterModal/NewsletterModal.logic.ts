@@ -14,3 +14,8 @@ export const validateNewsletterForm = (formData: NewsletterFormData): Partial<Ne
     return errors;
   }, {});
 };
+
+// idk if it's worth splitting into separate function, but it's repetetive
+export const getErrorLabelId = (fieldName: string): string => {
+  return `${fieldName}-error`;
+};

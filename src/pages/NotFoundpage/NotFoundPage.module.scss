@@ -1,0 +1,16 @@
+@use '/src/scss/utils/utils.scss' as func;
+
+.not-found-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__logo {
+    max-width: func.rem(900);
+  }
+  &__heading {
+    margin: 0; // remove default h1 margin
+  }
+}

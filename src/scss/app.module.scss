@@ -1,18 +1,15 @@
 @use '/src/scss/variables/variables.scss' as *;
 
-$main-bg-color: var(--main-bg);
-$main-color: var(--main-color);
-
 .app-wrapper {
-  width: 100vw;
-  height: 100svh;
   display: flex;
   flex-direction: row;
+  height: 100svh;
+  width: 100vw;
 
   &__main {
+    background-color: var(--main-bg);
+    color: var(--main-color);
     overflow-y: auto;
-    background-color: $main-bg-color;
-    color: $main-color;
-    width: 100%; // ensure main grows to maximum width
+    width: 100%;
   }
 }

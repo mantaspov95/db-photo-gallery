@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router';
+import NotFoundPage from '@pages/NotFoundpage';
 import App from './App';
 
 const router = createBrowserRouter([
@@ -8,8 +9,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '*',
-        // placeholder for non existing route callback.
-        Component: undefined,
+        Component: NotFoundPage,
       },
     ],
   },

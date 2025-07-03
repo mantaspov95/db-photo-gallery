@@ -5,18 +5,18 @@ import styles from './InputGroupFeedback.module.scss';
 
 const cx = classNames.bind(styles);
 
-type InputGroupFeedbackProps = Omit<HTMLAttributes<HTMLSpanElement>, 'className' | 'role'> & PropsWithChildren; // i prefer excluding role from props because it could be handled by function internally
+type InputGroupFeedbackProps = Omit<HTMLAttributes<HTMLSpanElement>, 'className' | 'role'> & PropsWithChildren;
 
 const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps): ReactElement => {
-  const { isError } = useInputGroup(); // can expand with isSuccess, isWarning and so on, or variant = name if needed
+  const { isError } = useInputGroup(); // TODO expand with isSuccess, isWarning and so on, or variant = name if needed
   return (
     <span
       {...restProps}
       className={cx('input-group-feedback', {
-        'input-group-feedback--visible': isError, // can expand with function if any variant exists, in case its needed
+        'input-group-feedback--visible': isError, // TODO expand with function if any variant exists, in case its needed
         'input-group-feedback--error': isError,
       })}
-      role={isError ? 'alert' : undefined} // can expand with function if any variant exists, in case its needed
+      role={isError ? 'alert' : undefined} // TODO expand with function if any variant exists, in case its needed
     >
       {children}
     </span>

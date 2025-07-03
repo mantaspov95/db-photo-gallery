@@ -7,7 +7,6 @@ $button-padding: utils.rem(12) utils.rem(32);
 $button-bg-color-hover-opacity: 0.85;
 $button-bg-color-active-opacity: 0.6;
 $button-bg-color-transition-duration: 0.1s;
-// variant color vars
 $button-primary-color: $color-white;
 $button-primary-bg-color: $color-primary;
 
@@ -15,10 +14,9 @@ $button-variants: (
   primary: (
     background-color: $button-primary-bg-color,
     color: $button-primary-color,
-  ), // placeholder to add more variants
+  ),
 );
 
-// global on hover reduces bg-color opacity with transition
 @mixin button-hover($bg-color) {
   &:hover {
     @include mixins.background-color-transition($button-bg-color-transition-duration);
@@ -26,7 +24,7 @@ $button-variants: (
     background-color: rgba($bg-color, $button-bg-color-hover-opacity);
   }
 }
-// global active reduces bg-color opacity with transition
+
 @mixin button-active($bg-color) {
   &:active {
     background-color: rgba($bg-color, $button-bg-color-active-opacity);

@@ -1,21 +1,17 @@
 @use '/src/scss/variables/variables.scss' as *;
-@use '/src/scss/utils/utils.scss' as func;
+@use '/src/scss/utils/utils.scss' as utils;
 @use '/src/scss/mixins/mixins.scss' as mixins;
 
-$content-spacing: func.rem(8);
-$font-size: func.rem(14);
-$feedback-error-color: #{$color-text-error};
-
 .input-group-feedback {
-  font-size: $font-size;
+  font-size: utils.rem(14);
   opacity: 0;
 
   &--visible {
     opacity: 1;
-    padding-top: $content-spacing;
+    padding-top: utils.rem(8);
   }
 
   &--error {
-    color: $feedback-error-color;
+    color: #{$color-text-error};
   }
 }

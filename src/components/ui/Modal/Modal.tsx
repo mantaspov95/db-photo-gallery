@@ -61,7 +61,6 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
       aria-labelledby={props['aria-labelledby']}
       aria-label={props['aria-label']}
       aria-describedby={props['aria-describedby']}
-      aria-description={props['aria-description']}
     >
       <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
     </dialog>

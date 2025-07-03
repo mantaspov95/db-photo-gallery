@@ -6,7 +6,7 @@ import type { ButtonVariant } from './Button.types';
 const cx = classNames.bind(styles);
 
 type CloseButtonProps = {
-  type?: ButtonHTMLAttributes<HTMLButtonElement>['type']; // default set as button if undefined
+  type?: 'button' | 'submit' | 'reset';
   variant?: ButtonVariant;
   className?: string;
 } & PropsWithChildren &
@@ -28,9 +28,10 @@ const Button = ({
       },
       className
     )}
-    type={type ?? 'button'}
+    type={type}
   >
     {children}
   </button>
 );
+
 export default Button;

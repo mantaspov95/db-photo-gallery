@@ -7,7 +7,9 @@ export type NewsletterFormData = {
 
 export type NewsletterFormField = (typeof NewsletterFormFields)[keyof typeof NewsletterFormFields];
 
+export type NewsletterValidation = (value: string) => string | null;
+
 export type NewsletterValidationRulesItem = {
   name: NewsletterFormField;
-  validation: (value: string /* expand if needed */) => string | null;
+  validation: NewsletterValidation;
 };

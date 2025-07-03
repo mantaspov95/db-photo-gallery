@@ -1,10 +1,9 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
-$modal-padding: utils.rem(60);
 $close-button-spacing: utils.rem(20);
 
 .modal-body {
-  padding: $modal-padding;
+  padding: utils.rem(60);
   position: relative;
 
   &--close-button {

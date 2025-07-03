@@ -30,7 +30,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
     setErrors(errorMessage);
 
     if (Object.keys(errorMessage).length === 0) {
-      console.log('handle submit');
+      // TODO expand with actual form submission logic
       resetForm();
       onClose();
     }
@@ -50,7 +50,6 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               handleSubmit();
             }}
           >
-            {/* this could be made into .map to DRY but it's only 2 fields and not likely to change */}
             <InputGroup isError={Boolean(errors?.name)}>
               <InputGroup.Label htmlFor={NewsletterFormFields.NAME}>Your name</InputGroup.Label>
               <InputGroup.Input

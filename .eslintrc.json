@@ -26,6 +26,8 @@
     }
   },
   "rules": {
+    "react/require-default-props": "off",
+    "react/jsx-props-no-spreading": "off",
     "lodash/prefer-includes": "off",
     "lodash/prefer-lodash-method": "off",
     "lodash/prefer-constant": "off",

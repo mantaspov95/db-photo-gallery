@@ -14,7 +14,7 @@ type InputGroupProps = { isError?: boolean; className?: string } & PropsWithChil
 const InputGroup = ({ isError = false, className, children, ...restProps }: InputGroupProps): ReactElement => {
   const InputGroupContextValue = useMemo(
     () => ({
-      isError, // epand if needed with more mutual props. i.e. is success etc
+      isError, // TODO expand with more mutual props. i.e. is success etc
     }),
     [isError]
   );

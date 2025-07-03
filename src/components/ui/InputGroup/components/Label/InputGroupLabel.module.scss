@@ -1,11 +1,7 @@
 @use '/src/scss/variables/variables.scss' as *;
-@use '/src/scss/utils/utils.scss' as func;
-
-$content-spacing: func.rem(16);
-
-$label-color: #{$color-gray-600};
+@use '/src/scss/utils/utils.scss' as utils;
 
 .input-group-label {
-  color: $label-color;
-  padding-bottom: $content-spacing;
+  color: #{$color-gray-600};
+  padding-bottom: utils.rem(16);
 }

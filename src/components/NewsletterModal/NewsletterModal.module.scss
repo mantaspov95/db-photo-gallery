@@ -1,14 +1,14 @@
-@use '/src/scss/utils/utils.scss' as func;
+@use '/src/scss/utils/utils.scss' as utils;
 @use '/src/scss/variables/variables.scss' as *;
 
-$container-width: func.rem(490);
-$heading-font-size: func.rem(20);
+$container-width: utils.rem(490);
+$heading-font-size: utils.rem(20);
 $heading-font-weight: 400;
-$heading-margin: 0 0 func.rem(40) 0;
+$heading-margin: 0 0 utils.rem(40) 0;
 $error-message-color: #{$color-text-error};
 
 .newsletter-modal {
-  max-width: 100%; // if screen size is smaller when block width prevent from overflow
+  max-width: 100%;
   width: $container-width;
 
   &__heading {
@@ -21,7 +21,7 @@ $error-message-color: #{$color-text-error};
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    gap: func.rem(24);
+    gap: utils.rem(24);
   }
 
   &__error-message {

@@ -4,10 +4,14 @@
   //sidenav
   --sidenav-bg: #{$color-gray-800};
   --sidenav-color: #{$color-gray-100};
+  --main-bg: #{$color-white};
+  --main-color: #{$color-gray-100};
 
   &[data-theme='dark'] {
     // sidenav
     --sidenav-bg: #{$color-gray-200};
     --sidenav-color: #{$color-white};
+    --main-bg: #{$color-gray-100};
+    --main-color: #{$color-white};
   }
 }

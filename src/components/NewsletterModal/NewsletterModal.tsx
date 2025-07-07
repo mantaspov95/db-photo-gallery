@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import InputGroup from '@components/ui/InputGroup';
 import styles from './NewsletterModal.module.scss';
 import { getErrorLabelId, validateNewsletterForm } from './NewsletterModal.logic';
-import type { NewsletterFormData } from './NewsletterModal.types';
+import type { NewsletterFormData, NewsletterFormField } from './NewsletterModal.types';
 import { INITIAL_NEWSLETTER_FORM_DATA } from './NewsletterModal.constants';
 import { NewsletterFormFields } from './NewsletterModal.enums';
 
@@ -25,7 +25,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
     setErrors({});
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     const errorMessage = validateNewsletterForm(formData);
     setErrors(errorMessage);
 
@@ -34,6 +34,10 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
       resetForm();
       onClose();
     }
+  };
+  const handleInputValueChange = (fieldName: NewsletterFormField, value: string): void => {
+    const trimmedValue = value.trim();
+    setFormData((prev) => ({ ...prev, [fieldName]: trimmedValue }));
   };
 
   return (
@@ -56,7 +60,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
                 autoComplete="name"
                 id={NewsletterFormFields.NAME}
                 value={formData.name}
-                onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
+                onChange={(e) => handleInputValueChange(NewsletterFormFields.NAME, e.target.value)}
                 aria-describedby={NAME_ERROR_ID}
               />
               <InputGroup.Feedback id={NAME_ERROR_ID}>{errors?.name}</InputGroup.Feedback>
@@ -65,10 +69,9 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               <InputGroup.Label htmlFor={NewsletterFormFields.EMAIL}>Your email address</InputGroup.Label>
               <InputGroup.Input
                 id={NewsletterFormFields.EMAIL}
-                type="email"
                 autoComplete="email"
                 value={formData.email}
-                onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+                onChange={(e) => handleInputValueChange(NewsletterFormFields.EMAIL, e.target.value)}
                 aria-describedby={EMAIL_ERROR_ID}
               />
               <InputGroup.Feedback id={EMAIL_ERROR_ID}>{errors?.email}</InputGroup.Feedback>

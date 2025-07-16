@@ -1,0 +1,10 @@
+@use '/src/scss/utils/utils.scss' as utils;
+
+$gallery-spacing: utils.rem(30);
+
+.gallery {
+  display: grid;
+  gap: $gallery-spacing;
+  padding: $gallery-spacing;
+  // TODO expand with masonry layout
+}

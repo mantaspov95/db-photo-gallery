@@ -6,6 +6,8 @@
   --sidenav-color: #{$color-gray-100};
   --main-bg: #{$color-white};
   --main-color: #{$color-gray-100};
+  --skeleton-start-bg: #{$color-gray-800};
+  --skeleton-end-bg: #{$color-gray-600};
 
   &[data-theme='dark'] {
     // sidenav
@@ -13,5 +15,7 @@
     --sidenav-color: #{$color-white};
     --main-bg: #{$color-gray-100};
     --main-color: #{$color-white};
+    --skeleton-start-bg: #{$color-gray-500};
+    --skeleton-end-bg: #{$color-gray-200};
   }
 }

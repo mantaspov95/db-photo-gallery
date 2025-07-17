@@ -1,7 +1,7 @@
-import { PICTURES_PER_PAGE } from '@constants/constants';
 import { useSuspenseQuery, type UseSuspenseQueryResult } from '@tanstack/react-query';
 import type { GalleryPictureApiItem } from '../Gallery.types';
 import { getPhotosListApiUrl } from '../Gallery.logic';
+import { PICTURES_PER_PAGE } from '../Gallery.constants';
 
 export const useGetPhotosList = (
   page = 1,

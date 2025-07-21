@@ -3,9 +3,9 @@
 @use '/src/scss/mixins/mixins.scss' as mixins;
 
 .input-group-input {
-  background-color: #{$color-gray-150};
-  border: 1px solid #{$color-gray-500};
-  color: #{$color-white};
+  background-color: $color-gray-150;
+  border: 1px solid $color-gray-500;
+  color: $color-white;
   font-size: utils.rem(16);
   height: utils.rem(40);
   padding: 0 utils.rem(5);

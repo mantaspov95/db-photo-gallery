@@ -18,23 +18,25 @@ const Footer = (): ReactElement => {
   const footerOptions = getFooterOptions(darkMode, toggleTheme, openNewsletterModal);
 
   return (
-    <div>
-      <nav aria-label="Footer Navigation">
-        <ul className={cx('footer')} role="menubar">
-          {footerOptions.map((item) => {
-            const Icon = item.icon;
-            return (
-              <li key={item.name} aria-label={item.title} role="menuitem">
-                <button type="button" title={item.title} onClick={item.onClick} className={cx('footer__item')}>
-                  <Icon />
-                </button>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+    <>
+      <footer>
+        <nav aria-label="Footer">
+          <ul className={cx('footer')} role="menubar">
+            {footerOptions.map((item) => {
+              const Icon = item.icon;
+              return (
+                <li key={item.name} aria-label={item.title} role="menuitem">
+                  <button type="button" title={item.title} onClick={item.onClick} className={cx('footer__item')}>
+                    <Icon />
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </footer>
       <NewsletterModal isOpen={isOpenNewsletterModal} onClose={() => setIsOpenNewsletterModal(false)} />
-    </div>
+    </>
   );
 };
 

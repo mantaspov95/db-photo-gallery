@@ -1,20 +1,14 @@
 @use '/src/scss/utils/utils.scss' as utils;
 @use '/src/scss/variables/variables.scss' as *;
 
-$container-width: utils.rem(490);
-$heading-font-size: utils.rem(20);
-$heading-font-weight: 400;
-$heading-margin: 0 0 utils.rem(40) 0;
-$error-message-color: #{$color-text-error};
-
 .newsletter-modal {
   max-width: 100%;
-  width: $container-width;
+  width: utils.rem(490);
 
   &__heading {
-    font-size: $heading-font-size;
-    font-weight: $heading-font-weight;
-    margin: $heading-margin;
+    font-size: utils.rem(20);
+    font-weight: 400;
+    margin: 0 0 utils.rem(40) 0;
   }
 
   &__content {
@@ -22,9 +16,5 @@ $error-message-color: #{$color-text-error};
     display: flex;
     flex-direction: column;
     gap: utils.rem(24);
-  }
-
-  &__error-message {
-    color: $error-message-color;
   }
 }

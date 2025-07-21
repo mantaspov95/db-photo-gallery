@@ -22,10 +22,11 @@
   "plugins": ["@typescript-eslint", "react", "@typescript-eslint", "import"],
   "settings": {
     "react": {
-      "version": "detect" // Tells eslint-plugin-react to automatically detect the version from your dependencies
+      "version": "detect"
     }
   },
   "rules": {
+    "react/button-has-type": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": "off",
     "lodash/prefer-includes": "off",

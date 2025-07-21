@@ -2,6 +2,6 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
 .input-group-label {
-  color: #{$color-gray-600};
+  color: $color-gray-600;
   padding-bottom: utils.rem(16);
 }

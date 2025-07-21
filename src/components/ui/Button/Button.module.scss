@@ -1,45 +1,43 @@
 @use '/src/scss/utils/utils' as utils;
 @use '/src/scss/variables/variables' as *;
-@use '@scss/mixins/mixins' as mixins;
-@use 'sass:map';
+@use '/src/scss/mixins/mixins' as mixins;
 
-$button-padding: utils.rem(12) utils.rem(32);
-$button-bg-color-hover-opacity: 0.85;
-$button-bg-color-active-opacity: 0.6;
-$button-bg-color-transition-duration: 0.1s;
-$button-primary-color: $color-white;
-$button-primary-bg-color: $color-primary;
-
-$button-variants: (
-  primary: (
-    background-color: $button-primary-bg-color,
-    color: $button-primary-color,
-  ),
-);
-
-@mixin button-hover($bg-color) {
+@mixin button-bg-hover($bg-color) {
   &:hover {
-    @include mixins.background-color-transition($button-bg-color-transition-duration);
+    @include mixins.background-color-transition(0.1s);
 
-    background-color: rgba($bg-color, $button-bg-color-hover-opacity);
+    background-color: rgba($bg-color, 0.85);
   }
 }
 
 @mixin button-active($bg-color) {
   &:active {
-    background-color: rgba($bg-color, $button-bg-color-active-opacity);
+    background-color: rgba($bg-color, 0.6);
   }
 }
 
 .button {
-  padding: $button-padding;
-  @each $variant, $options in $button-variants {
-    &--#{$variant} {
-      @include button-hover(map.get($options, background-color));
-      @include button-active(map.get($options, background-color));
+  &--close {
+    color: $color-gray-500;
 
-      background-color: map.get($options, background-color);
-      color: map.get($options, color);
+    &:hover {
+      color: $color-white;
     }
+  }
+
+  &--primary {
+    $bg: $color-primary;
+
+    @include button-bg-hover($bg);
+    @include button-active($bg);
+
+    background-color: $bg;
+    color: $color-white;
+    padding: utils.rem(12) utils.rem(32);
+  }
+
+  &__close-icon {
+    height: utils.rem(24);
+    width: utils.rem(24);
   }
 }

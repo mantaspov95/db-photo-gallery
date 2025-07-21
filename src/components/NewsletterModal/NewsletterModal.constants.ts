@@ -1,27 +1,14 @@
-import { EMAIL_REGEX_CHECK } from '@constants/constants';
 import { NewsletterFormFields } from './NewsletterModal.enums';
-import type { NewsletterFormData, NewsletterValidation, NewsletterValidationRulesItem } from './NewsletterModal.types';
+import { validateEmail, validateName } from './NewsletterModal.logic';
+import type { NewsletterFormData, NewsletterValidation } from './NewsletterModal.types';
 
-const ERROR_MESSAGE_REQUIRED = 'Field is required';
-const ERROR_MESSAGE_EMAIL_INVALID = 'Please input a valid email address';
+export const ERROR_MESSAGE_REQUIRED = 'Field is required';
+export const ERROR_MESSAGE_EMAIL_INVALID = 'Please input a valid email address';
 export const INITIAL_NEWSLETTER_FORM_DATA: NewsletterFormData = { name: '', email: '' };
-
-const validateName: NewsletterValidation = (value) => {
-  if (!value) return ERROR_MESSAGE_REQUIRED;
-  return null;
+export const NEWSLETTER_NAME_ERROR_ID = `${NewsletterFormFields.NAME}-error`;
+export const NEWSLETTER_EMAIL_ERROR_ID = `${NewsletterFormFields.EMAIL}-error`;
+export const NEWSLETTER_FORM_VALIDATION_RULES: Record<NewsletterFormFields, NewsletterValidation> = {
+  [NewsletterFormFields.NAME]: validateName,
+  [NewsletterFormFields.EMAIL]: validateEmail,
 };
-const validateEmail: NewsletterValidation = (value) => {
-  if (!value) return ERROR_MESSAGE_REQUIRED;
-  if (!EMAIL_REGEX_CHECK.test(value)) return ERROR_MESSAGE_EMAIL_INVALID;
-  return null;
-};
-export const NEWSLETTER_FORM_VALIDATION_RULES: NewsletterValidationRulesItem[] = [
-  {
-    name: NewsletterFormFields.NAME,
-    validation: validateName,
-  },
-  {
-    name: NewsletterFormFields.EMAIL,
-    validation: validateEmail,
-  },
-];
+export const NEWSLETTER_EMAIL_REGEX_CHECK = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/g;

@@ -1,6 +1,6 @@
 import type { PropsWithChildren, ReactElement } from 'react';
-import CloseButton from '@components/ui/CloseButton';
 import classNames from 'classnames/bind';
+import Button from '@components/ui/Button';
 import styles from './ModalBody.module.scss';
 import useModal from '../../hooks/useModal';
 
@@ -15,7 +15,12 @@ const ModalBody = ({ className, children }: ModalBodyProps): ReactElement => {
   const { close } = useModal();
   return (
     <div className={cx('modal-body', className)}>
-      <CloseButton onClose={() => close()} className={cx('modal-body--close-button')} aria-label="Close modal" />
+      <Button
+        variant="close"
+        onClick={() => close()}
+        className={cx('modal-body--close-button')}
+        aria-label="Close modal"
+      />
       {children}
     </div>
   );

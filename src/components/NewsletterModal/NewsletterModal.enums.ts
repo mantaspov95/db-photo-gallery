@@ -1,4 +1,4 @@
-export enum NewsletterFormFields {
-  NAME = 'name',
-  EMAIL = 'email',
-}
+export const NewsletterFormFields = {
+  NAME: 'name',
+  EMAIL: 'email',
+} as const;

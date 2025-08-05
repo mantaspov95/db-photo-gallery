@@ -6,7 +6,7 @@ $close-button-spacing: utils.rem(20);
   padding: utils.rem(60);
   position: relative;
 
-  &--close-button {
+  &__close-button {
     position: absolute;
     right: $close-button-spacing;
     top: $close-button-spacing;

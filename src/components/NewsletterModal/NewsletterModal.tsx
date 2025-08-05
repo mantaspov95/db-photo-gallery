@@ -27,9 +27,10 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
   };
 
   const handleSubmit = (): void => {
-    const errorMessage = validateNewsletterForm(formData);
     const trimmedFormData = getTrimmedNewsletterFormData(formData);
     setFormData(trimmedFormData);
+
+    const errorMessage = validateNewsletterForm(trimmedFormData);
     setErrors(errorMessage);
 
     if (Object.keys(errorMessage).length === 0) {
@@ -78,6 +79,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               <InputGroup.Input
                 id={NewsletterFormFields.EMAIL}
                 autoComplete="email"
+                type="email"
                 value={formData.email}
                 onChange={(e) => handleInputValueChange(NewsletterFormFields.EMAIL, e.target.value)}
                 aria-describedby={NEWSLETTER_EMAIL_ERROR_ID}

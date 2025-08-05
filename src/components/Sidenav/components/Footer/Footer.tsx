@@ -4,6 +4,7 @@ import { useState, type ReactElement } from 'react';
 import NewsletterModal from '@components/NewsletterModal';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
+import Button from '@components/ui/Button';
 
 const cx = classNames.bind(styles);
 
@@ -26,9 +27,9 @@ const Footer = (): ReactElement => {
               const Icon = item.icon;
               return (
                 <li key={item.name} aria-label={item.title} role="menuitem">
-                  <button type="button" title={item.title} onClick={item.onClick} className={cx('footer__item')}>
+                  <Button type="button" variant="footer" title={item.title} onClick={item.onClick}>
                     <Icon />
-                  </button>
+                  </Button>
                 </li>
               );
             })}

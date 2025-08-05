@@ -11,17 +11,16 @@ type ModalBodyProps = {
 } & PropsWithChildren;
 
 const ModalBody = ({ className, children }: ModalBodyProps): ReactElement => {
-  // context to prevent prop drilling
   const { close } = useModal();
   return (
     <div className={cx('modal-body', className)}>
+      {children}
       <Button
         variant="close"
         onClick={() => close()}
-        className={cx('modal-body--close-button')}
+        className={cx('modal-body__close-button')}
         aria-label="Close modal"
       />
-      {children}
     </div>
   );
 };

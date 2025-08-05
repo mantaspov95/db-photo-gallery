@@ -1,4 +1,3 @@
-// prevents calling dialog.showModal() when it is already visible
 export const openModal = (dialog: HTMLDialogElement | null): void => {
   if (dialog && !dialog.open) {
     dialog.showModal();

@@ -6,7 +6,7 @@ const useInputGroup = (): InputGroupContextProps => {
   const context = useContext(InputGroupContext);
 
   if (!context) {
-    throw new Error('useInputGroup must be used within ModalContext.Provider');
+    throw new Error('useInputGroup must be used within InputGroupContext.Provider');
   }
   return context;
 };

@@ -1,10 +1,10 @@
 import { useMemo, type HTMLAttributes, type PropsWithChildren, type ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import InputGroupInput from './components/Input';
-import InputGroupLabel from './components/Label';
+import InputGroupInput from './components/InputGroupInput';
+import InputGroupLabel from './components/InputGroupLabel';
 import styles from './InputGroup.module.scss';
 import InputGroupContext from './context/InputGroupContext';
-import InputGroupFeedback from './components/Feedback';
+import InputGroupFeedback from './components/InputGroupFeedback';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +14,7 @@ type InputGroupProps = { isError?: boolean; className?: string } & PropsWithChil
 const InputGroup = ({ isError = false, className, children, ...restProps }: InputGroupProps): ReactElement => {
   const InputGroupContextValue = useMemo(
     () => ({
-      isError, // TODO expand with more mutual props. i.e. is success etc
+      isError,
     }),
     [isError]
   );

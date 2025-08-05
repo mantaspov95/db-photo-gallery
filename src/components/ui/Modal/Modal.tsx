@@ -8,7 +8,6 @@ import type { ModalProps } from './Modal.types';
 
 const cx = classNames.bind(styles);
 
-// https://clhenrick.io/blog/react-a11y-modal-dialog/
 const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialog = dialogRef?.current;
@@ -20,11 +19,10 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
     }),
     [dialog]
   );
-  // syncs the dialog's `open` property with React `isOpen` state
+
   useEffect(() => {
     if (!dialog) return undefined;
 
-    // https://stackoverflow.com/a/26984690
     const handleBackdropClick = (event: MouseEvent) => {
       const rect = dialog.getBoundingClientRect();
       const isInDialog =
@@ -37,19 +35,28 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
       }
     };
 
-    // when parent changes state to trigger native dialog functions
+    const handleFocusFirstElement = () => {
+      const focusableElements = dialog.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      if (firstElement instanceof HTMLElement) {
+        firstElement.focus();
+      }
+    };
+
     if (isOpen) {
       openModal(dialog);
+      handleFocusFirstElement();
     } else {
       closeModal(dialog);
     }
-    // mousedown instead of click to prevent enter keyboard press to act as click
-    // outside(backdrop) mousedown event listener
+
     dialog.addEventListener('mousedown', handleBackdropClick);
 
     return () => {
       dialog.removeEventListener('mousedown', handleBackdropClick);
-      closeModal(dialog); // ensure modal is closed on cleanup
+      closeModal(dialog);
     };
   }, [isOpen]);
 
@@ -67,7 +74,6 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
   );
 };
 
-// assigning as subcomponent for clarity
 Modal.Body = ModalBody;
 
 export default Modal;

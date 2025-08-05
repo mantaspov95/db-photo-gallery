@@ -1,5 +1,5 @@
 @use '/src/scss/variables/variables' as *;
-@use '@scss/mixins/mixins' as mixins;
+@use '/src/scss/mixins/mixins' as mixins;
 
 .modal {
   background-color: $color-gray-100;
@@ -29,7 +29,6 @@
     }
   }
 
-  // when screen size is mobile - modal is fullscreen
   @media (max-width: $screen-size-sm) {
     & {
       height: 100svh;

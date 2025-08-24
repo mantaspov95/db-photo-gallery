@@ -1,7 +1,7 @@
 @use '/src/components/Sidenav/Sidenav.module.scss' as *;
 @use '/src/scss/variables/variables.scss' as *;
 
-//navlink colors. not dependent on theme
+// navlink colors. not dependent on theme
 $navlink-color-active: #{$color-white};
 $navlink-bg-active: #{$color-primary};
 $navlink-bg-hover: #{$color-gray-600};

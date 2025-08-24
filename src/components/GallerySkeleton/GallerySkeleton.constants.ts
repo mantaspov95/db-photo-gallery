@@ -1,0 +1,1 @@
+export const SKELETON_PICTURES_PER_PAGE = 6;

@@ -1,0 +1,9 @@
+@use '/src/scss/mixins/mixins.scss' as mixins;
+@use '/src/scss/utils/utils.scss' as utils;
+
+.gallery-skeleton {
+  @include mixins.skeleton-animation();
+
+  height: utils.rem(340);
+  width: utils.rem(270);
+}

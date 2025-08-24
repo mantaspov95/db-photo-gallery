@@ -23,12 +23,13 @@
     "*.{css,module.css}": "stylelint --fix"
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.77.1",
+    "@tanstack/react-query": "^5.83.0",
     "@vitejs/plugin-react": "^4.4.1",
     "classnames": "^2.5.1",
     "normalize.css": "8.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-error-boundary": "^6.0.0",
     "react-router": "^7.6.2",
     "react-router-dom": "^7.6.2",
     "sass": "^1.89.0",

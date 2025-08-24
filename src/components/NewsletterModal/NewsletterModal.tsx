@@ -79,7 +79,6 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               <InputGroup.Input
                 id={NewsletterFormFields.EMAIL}
                 autoComplete="email"
-                type="email"
                 value={formData.email}
                 onChange={(e) => handleInputValueChange(NewsletterFormFields.EMAIL, e.target.value)}
                 aria-describedby={NEWSLETTER_EMAIL_ERROR_ID}

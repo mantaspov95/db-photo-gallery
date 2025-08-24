@@ -8,15 +8,19 @@
   &[open] {
     @include mixins.fade-in-transition;
 
-    opacity: 1;
+    & {
+      opacity: 1;
+    }
   }
 
   &::backdrop {
     @include mixins.fade-in-transition;
 
-    backdrop-filter: $bg-blur-20;
-    background-color: $color-overlay;
-    opacity: 1;
+    & {
+      backdrop-filter: $bg-blur-20;
+      background-color: $color-overlay;
+      opacity: 1;
+    }
   }
 
   @starting-style {

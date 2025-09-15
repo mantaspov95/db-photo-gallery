@@ -2,9 +2,9 @@ import useTheme from '@hooks/useTheme';
 import classNames from 'classnames/bind';
 import { useState, type ReactElement } from 'react';
 import NewsletterModal from '@components/NewsletterModal';
+import Button from '@components/ui/Button';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
-import Button from '@components/ui/Button';
 
 const cx = classNames.bind(styles);
 

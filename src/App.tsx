@@ -1,8 +1,8 @@
 import { type ReactElement } from 'react';
-import styles from '@scss/app.module.scss';
 import classNames from 'classnames/bind';
 import { Outlet } from 'react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import styles from './scss/app.module.scss';
 import Sidenav from './components/Sidenav';
 import ThemeProvider from './context/ThemeProvider';
 

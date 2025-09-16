@@ -3,7 +3,7 @@
 
 .gallery-skeleton {
   @include mixins.skeleton-animation();
-
+margin: utils.rem(15);
   height: utils.rem(340);
   width: utils.rem(270);
 }

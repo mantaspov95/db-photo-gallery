@@ -12,7 +12,7 @@ const GallerySkeleton = (): ReactElement[] => {
 
   return skeletonArray.map((_, index) => (
     // eslint-disable-next-line react/no-array-index-key
-    <div key={`${elementId}-${index}`} className={cx('skeleton', 'gallery-skeleton')} />
+    <div key={`${elementId}-${index}`} className={cx('gallery-skeleton')} />
   ));
 };
 export default GallerySkeleton;

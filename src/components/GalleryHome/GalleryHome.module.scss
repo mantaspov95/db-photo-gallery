@@ -1,6 +1,8 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
-.gallery {
+$gallery-spacing: utils.rem(30);
+
+.gallery-home {
   display: grid;
   grid-auto-rows: utils.rem(10);
   grid-template-columns: repeat(auto-fill, minmax(utils.rem(270), 1fr));

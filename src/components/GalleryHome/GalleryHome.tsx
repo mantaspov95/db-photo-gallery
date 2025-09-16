@@ -21,7 +21,7 @@ const GalleryHome = (): ReactElement => (
   <QueryErrorResetBoundary>
     {({ reset }) => (
       <ErrorBoundary fallback={<ErrorFallbackButton onClick={reset} />}>
-        <div className={cx('gallery')}>
+        <div className={cx('gallery-home')}>
           <Suspense fallback={<GallerySkeleton />}>
             <GalleryHomeContent />
           </Suspense>

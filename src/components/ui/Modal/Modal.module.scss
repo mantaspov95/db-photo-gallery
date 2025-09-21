@@ -33,7 +33,7 @@
     }
   }
 
-  @media (max-width: $screen-size-sm) {
+  @media (max-width: #{$screen-size-sm}) {
     & {
       height: 100svh;
       max-height: 100svh;

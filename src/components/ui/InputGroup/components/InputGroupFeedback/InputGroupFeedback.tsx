@@ -13,7 +13,6 @@ const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps)
     <span
       {...restProps}
       className={cx('input-group-feedback', {
-        'input-group-feedback--visible': isError,
         'input-group-feedback--error': isError,
       })}
       role={isError ? 'alert' : undefined}
@@ -22,4 +21,5 @@ const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps)
     </span>
   );
 };
+
 export default InputGroupFeedback;

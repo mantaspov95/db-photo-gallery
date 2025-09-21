@@ -8,8 +8,9 @@ import InputGroupFeedback from './components/InputGroupFeedback';
 
 const cx = classNames.bind(styles);
 
-type InputGroupProps = { isError?: boolean; className?: string } & PropsWithChildren &
-  Omit<HTMLAttributes<HTMLDivElement>, 'className'>;
+type InputGroupProps = {
+  isError?: boolean;
+} & PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
 
 const InputGroup = ({ isError = false, className, children, ...restProps }: InputGroupProps): ReactElement => {
   const InputGroupContextValue = useMemo(

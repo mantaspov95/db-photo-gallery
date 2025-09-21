@@ -2,16 +2,18 @@
 @use '/src/scss/utils/utils.scss' as utils;
 @use '/src/scss/mixins/mixins.scss' as mixins;
 
+@mixin feedback-visible() {
+  opacity: 1;
+  padding-top: utils.rem(8);
+}
+
 .input-group-feedback {
   font-size: utils.rem(14);
   opacity: 0;
 
-  &--visible {
-    opacity: 1;
-    padding-top: utils.rem(8);
-  }
-
   &--error {
+    @include feedback-visible();
+
     color: $color-text-error;
   }
 }

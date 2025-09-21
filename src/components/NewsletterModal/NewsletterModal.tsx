@@ -4,7 +4,7 @@ import { useId, useState, type ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import InputGroup from '@components/ui/InputGroup';
 import styles from './NewsletterModal.module.scss';
-import type { NewsletterFormData, NewsletterFormField } from './NewsletterModal.types';
+import type { NewsletterFormData, NewsletterFormErrors, NewsletterFormField } from './NewsletterModal.types';
 import {
   INITIAL_NEWSLETTER_FORM_DATA,
   NEWSLETTER_EMAIL_ERROR_ID,
@@ -18,22 +18,22 @@ const cx = classNames.bind(styles);
 const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
   const accNameId = useId();
 
-  const [formData, setFormData] = useState(INITIAL_NEWSLETTER_FORM_DATA);
-  const [errors, setErrors] = useState<Partial<NewsletterFormData>>({});
+  const [formData, setFormData] = useState<NewsletterFormData>(INITIAL_NEWSLETTER_FORM_DATA);
+  const [formErrors, setFormErrors] = useState<NewsletterFormErrors | null>(null);
 
   const resetForm = (): void => {
     setFormData(INITIAL_NEWSLETTER_FORM_DATA);
-    setErrors({});
+    setFormErrors(null);
   };
 
   const handleSubmit = (): void => {
     const trimmedFormData = getTrimmedNewsletterFormData(formData);
     setFormData(trimmedFormData);
 
-    const errorMessage = validateNewsletterForm(trimmedFormData);
-    setErrors(errorMessage);
+    const errors = validateNewsletterForm(trimmedFormData);
+    setFormErrors(errors);
 
-    if (Object.keys(errorMessage).length === 0) {
+    if (Object.values(errors).every((value) => !value)) {
       // TODO expand with actual form submission logic
       resetForm();
       onClose();
@@ -63,7 +63,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
               handleSubmit();
             }}
           >
-            <InputGroup isError={!!errors.name}>
+            <InputGroup isError={!!formErrors?.name}>
               <InputGroup.Label htmlFor={NewsletterFormFields.NAME}>Your name</InputGroup.Label>
               <InputGroup.Input
                 autoComplete="name"
@@ -72,9 +72,9 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
                 onChange={(e) => handleInputValueChange(NewsletterFormFields.NAME, e.target.value)}
                 aria-describedby={NEWSLETTER_NAME_ERROR_ID}
               />
-              <InputGroup.Feedback id={NEWSLETTER_NAME_ERROR_ID}>{errors?.name}</InputGroup.Feedback>
+              <InputGroup.Feedback id={NEWSLETTER_NAME_ERROR_ID}>{formErrors?.name}</InputGroup.Feedback>
             </InputGroup>
-            <InputGroup isError={!!errors.email}>
+            <InputGroup isError={!!formErrors?.email}>
               <InputGroup.Label htmlFor={NewsletterFormFields.EMAIL}>Your email address</InputGroup.Label>
               <InputGroup.Input
                 id={NewsletterFormFields.EMAIL}
@@ -83,7 +83,7 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
                 onChange={(e) => handleInputValueChange(NewsletterFormFields.EMAIL, e.target.value)}
                 aria-describedby={NEWSLETTER_EMAIL_ERROR_ID}
               />
-              <InputGroup.Feedback id={NEWSLETTER_EMAIL_ERROR_ID}>{errors?.email}</InputGroup.Feedback>
+              <InputGroup.Feedback id={NEWSLETTER_EMAIL_ERROR_ID}>{formErrors?.email}</InputGroup.Feedback>
             </InputGroup>
             <Button type="submit">SUBSCRIBE</Button>
           </form>
@@ -92,4 +92,5 @@ const NewsletterModal = ({ isOpen, onClose }: ModalProps): ReactElement => {
     </Modal>
   );
 };
+
 export default NewsletterModal;

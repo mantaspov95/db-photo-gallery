@@ -15,4 +15,5 @@ const GallerySkeleton = (): ReactElement[] => {
     <div key={`${elementId}-${index}`} className={cx('gallery-skeleton')} />
   ));
 };
+
 export default GallerySkeleton;

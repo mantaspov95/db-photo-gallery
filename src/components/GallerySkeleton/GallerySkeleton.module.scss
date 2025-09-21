@@ -4,8 +4,6 @@
 .gallery-skeleton {
   @include mixins.skeleton-animation();
 
-  & {
-    height: utils.rem(340);
-    width: utils.rem(270);
-  }
+  height: utils.rem(340);
+  width: utils.rem(270);
 }

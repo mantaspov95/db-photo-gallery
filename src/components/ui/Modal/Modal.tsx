@@ -11,6 +11,7 @@ const cx = classNames.bind(styles);
 const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const dialog = dialogRef?.current;
+
   const contextValue = useMemo(
     () => ({
       close: () => {
@@ -24,13 +25,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
     if (!dialog) return undefined;
 
     const handleBackdropClick = (event: MouseEvent) => {
-      const rect = dialog.getBoundingClientRect();
-      const isInDialog =
-        rect.top <= event.clientY &&
-        event.clientY <= rect.top + rect.height &&
-        rect.left <= event.clientX &&
-        event.clientX <= rect.left + rect.width;
-      if (!isInDialog) {
+      if (event.target === dialog) {
         closeModal(dialog);
       }
     };
@@ -58,7 +53,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
       dialog.removeEventListener('mousedown', handleBackdropClick);
       closeModal(dialog);
     };
-  }, [isOpen]);
+  }, [isOpen, dialog]);
 
   return (
     <dialog

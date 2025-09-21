@@ -10,4 +10,5 @@ const useInputGroup = (): InputGroupContextProps => {
   }
   return context;
 };
+
 export default useInputGroup;

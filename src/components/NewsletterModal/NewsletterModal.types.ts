@@ -13,3 +13,5 @@ export type NewsletterValidationRulesItem = {
   name: NewsletterFormField;
   validation: NewsletterValidation;
 };
+
+export type NewsletterFormErrors = Record<NewsletterFormField, string | null>;

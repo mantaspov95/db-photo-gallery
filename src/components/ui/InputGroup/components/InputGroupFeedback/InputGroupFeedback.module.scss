@@ -12,8 +12,7 @@
   opacity: 0;
 
   &--error {
-    @include feedback-visible();
-
     color: $color-text-error;
+    @include feedback-visible();
   }
 }

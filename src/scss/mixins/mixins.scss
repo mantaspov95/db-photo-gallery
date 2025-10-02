@@ -16,9 +16,7 @@
 }
 
 @mixin transition($type, $duration: 0.25s, $timing: ease-in-out) {
-  & {
-    transition: $type $duration $timing;
-  }
+  transition: $type $duration $timing;
   @media (prefers-reduced-motion: reduce) {
     transition: none;
   }

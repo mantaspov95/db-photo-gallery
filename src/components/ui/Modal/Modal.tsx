@@ -10,18 +10,20 @@ const cx = classNames.bind(styles);
 
 const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const dialog = dialogRef?.current;
 
-  const contextValue = useMemo(
-    () => ({
+  const contextValue = useMemo(() => {
+    const dialog = dialogRef?.current;
+
+    return {
       close: () => {
         closeModal(dialog);
       },
-    }),
-    [dialog]
-  );
+    };
+  }, []);
 
   useEffect(() => {
+    const dialog = dialogRef?.current;
+
     if (!dialog) return undefined;
 
     const handleBackdropClick = (event: MouseEvent) => {
@@ -53,7 +55,7 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
       dialog.removeEventListener('mousedown', handleBackdropClick);
       closeModal(dialog);
     };
-  }, [isOpen, dialog]);
+  }, [isOpen]);
 
   return (
     <dialog

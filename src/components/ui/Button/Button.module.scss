@@ -4,9 +4,8 @@
 
 @mixin button-bg-hover($bg-color) {
   &:hover {
-    @include mixins.background-color-transition(0.1s);
-
     background-color: rgba($bg-color, 0.85);
+    @include mixins.background-color-transition(0.1s);
   }
 }
 
@@ -28,12 +27,12 @@
   &--primary {
     $bg: $color-primary;
 
-    @include button-bg-hover($bg);
-    @include button-active($bg);
-
     background-color: $bg;
     color: $color-white;
     padding: utils.rem(12) utils.rem(32);
+
+    @include button-bg-hover($bg);
+    @include button-active($bg);
   }
 
   &--footer {

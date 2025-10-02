@@ -11,13 +11,10 @@
   padding: 0 utils.rem(5);
 
   &--error {
+    border: 1px solid #{$color-red-100};
+    box-shadow: 0 0 0 3px rgba($color-red-100, 0.3);
+    outline: none;
     @include mixins.transition(border, 0.1s);
     @include mixins.transition(box-shadow, 0.1s);
-
-    & {
-      border: 1px solid #{$color-red-100};
-      box-shadow: 0 0 0 3px rgba($color-red-100, 0.3);
-      outline: none;
-    }
   }
 }

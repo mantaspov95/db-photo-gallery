@@ -11,9 +11,10 @@ type GalleryPictureProps = {
 };
 
 const GalleryPicture = ({ apiItem }: GalleryPictureProps): ReactElement => {
-  const alt = `Photo ${apiItem.author} ${apiItem.id}`;
+  const alt = `Photo by ${apiItem.author}, ID - ${apiItem.id}`;
   const reducedImageUrl = getGalleryPictureReducedImageUrl(apiItem.id, apiItem.width, apiItem.height);
   const variant = getGalleryPictureVariant(apiItem.width, apiItem.height);
+
   return (
     <div className={cx('gallery-picture', `gallery-picture--${variant}`)}>
       <img src={reducedImageUrl} alt={alt} />

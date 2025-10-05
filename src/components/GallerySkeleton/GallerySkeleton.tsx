@@ -17,4 +17,5 @@ const GallerySkeleton = (): ReactElement[] => {
     </div>
   ));
 };
+
 export default GallerySkeleton;

@@ -54,11 +54,14 @@
         "prev": "*",
         "next": ["interface", "type"]
       },
+
       {
         "blankLine": "always",
         "prev": ["interface", "type"],
         "next": "*"
-      }
+      },
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": "*", "next": "export" }
     ],
     "react/function-component-definition": [
       2,

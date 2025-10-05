@@ -7,5 +7,6 @@ export default function useTheme(): ThemeContextType {
   if (!context) {
     throw new Error('useTheme can only be used inside a ThemeProvider');
   }
+
   return context;
 }

@@ -1,7 +1,5 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
-$gallery-spacing: utils.rem(30);
-
 .gallery-home {
   display: grid;
   grid-auto-rows: utils.rem(10);

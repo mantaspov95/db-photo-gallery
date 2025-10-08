@@ -13,4 +13,5 @@ const NotFoundPage = (): ReactElement => (
     </h1>
   </div>
 );
+
 export default NotFoundPage;

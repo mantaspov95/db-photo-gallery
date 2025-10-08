@@ -4,12 +4,17 @@ import DarkModeLogo from '@assets/icon-dark-mode.svg?react';
 import { Theme } from '@constants/enums';
 import type { FooterOptionsItem } from './Footer.types';
 
-export const getFooterOptions = (darkMode: boolean, toggleTheme: () => void): FooterOptionsItem[] => [
+export const getFooterOptions = (
+  darkMode: boolean,
+  toggleTheme: () => void,
+  openNewsletterModal: () => void
+): FooterOptionsItem[] => [
   {
     name: 'newsletter',
     title: 'Subscribe to Newsletter',
     icon: NewsletterLogo,
-    onClick: () => {}, // TODO: placeholder for newsletter callback or setIsModalOpen
+    onClick: () => openNewsletterModal(),
+    // TODO: placeholder for newsletter callback or setIsModalOpen
   },
   {
     name: 'change-theme',

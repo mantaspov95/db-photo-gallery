@@ -1,0 +1,18 @@
+@use '/src/scss/variables/variables.scss' as *;
+@use '/src/scss/utils/utils.scss' as utils;
+@use '/src/scss/mixins/mixins.scss' as mixins;
+
+@mixin feedback-visible() {
+  opacity: 1;
+  padding-top: utils.rem(8);
+}
+
+.input-group-feedback {
+  font-size: utils.rem(14);
+  opacity: 0;
+
+  &--error {
+    color: $color-text-error;
+    @include feedback-visible();
+  }
+}

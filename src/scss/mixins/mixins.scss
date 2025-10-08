@@ -14,3 +14,18 @@
     }
   }
 }
+
+@mixin transition($type, $duration: 0.25s, $timing: ease-in-out) {
+  transition: $type $duration $timing;
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+@mixin fade-in-transition($duration: 0.25s, $timing: ease-in-out) {
+  @include transition(opacity, $duration, $timing);
+}
+
+@mixin background-color-transition($duration: 0.25s, $timing: ease-in-out) {
+  @include transition(background-color, $duration, $timing);
+}

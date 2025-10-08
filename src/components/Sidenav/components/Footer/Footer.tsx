@@ -1,6 +1,8 @@
 import useTheme from '@hooks/useTheme';
 import classNames from 'classnames/bind';
-import { type ReactElement } from 'react';
+import { useState, type ReactElement } from 'react';
+import NewsletterModal from '@components/NewsletterModal';
+import Button from '@components/ui/Button';
 import styles from './Footer.module.scss';
 import { getFooterOptions } from './Footer.logic';
 
@@ -8,7 +10,13 @@ const cx = classNames.bind(styles);
 
 const Footer = (): ReactElement => {
   const { toggleTheme, darkMode } = useTheme();
-  const footerOptions = getFooterOptions(darkMode, toggleTheme);
+  const [isOpenNewsletterModal, setIsOpenNewsletterModal] = useState<boolean>(false);
+
+  const openNewsletterModal = () => {
+    setIsOpenNewsletterModal(true);
+  };
+
+  const footerOptions = getFooterOptions(darkMode, toggleTheme, openNewsletterModal);
 
   return (
     <nav aria-label="Footer Navigation">

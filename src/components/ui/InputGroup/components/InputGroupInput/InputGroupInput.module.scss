@@ -1,0 +1,20 @@
+@use '/src/scss/variables/variables.scss' as *;
+@use '/src/scss/utils/utils.scss' as utils;
+@use '/src/scss/mixins/mixins.scss' as mixins;
+
+.input-group-input {
+  background-color: $color-gray-150;
+  border: 1px solid $color-gray-500;
+  color: $color-white;
+  font-size: utils.rem(16);
+  height: utils.rem(40);
+  padding: 0 utils.rem(5);
+
+  &--error {
+    border: 1px solid #{$color-red-100};
+    box-shadow: 0 0 0 3px rgba($color-red-100, 0.3);
+    outline: none;
+    @include mixins.transition(border, 0.1s);
+    @include mixins.transition(box-shadow, 0.1s);
+  }
+}

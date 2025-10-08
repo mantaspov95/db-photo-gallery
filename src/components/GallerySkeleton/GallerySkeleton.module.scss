@@ -6,10 +6,9 @@
   padding: utils.rem(15);
 
   &__item {
-    @include mixins.skeleton-animation();
-
     height: 100%;
     min-height: utils.rem(330);
     width: 100%;
+    @include mixins.skeleton-animation();
   }
 }

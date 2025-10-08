@@ -1,0 +1,47 @@
+@use '/src/scss/utils/utils' as utils;
+@use '/src/scss/variables/variables' as *;
+@use '/src/scss/mixins/mixins' as mixins;
+
+@mixin button-bg-hover($bg-color) {
+  &:hover {
+    background-color: rgba($bg-color, 0.85);
+    @include mixins.background-color-transition(0.1s);
+  }
+}
+
+@mixin button-active($bg-color) {
+  &:active {
+    background-color: rgba($bg-color, 0.6);
+  }
+}
+
+.button {
+  &--close {
+    color: $color-gray-500;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+
+  &--primary {
+    $bg: $color-primary;
+
+    background-color: $bg;
+    color: $color-white;
+    padding: utils.rem(12) utils.rem(32);
+
+    @include button-bg-hover($bg);
+    @include button-active($bg);
+  }
+
+  &--footer {
+    background-color: transparent;
+    color: var(--sidenav-color);
+  }
+
+  &__close-icon {
+    height: utils.rem(24);
+    width: utils.rem(24);
+  }
+}

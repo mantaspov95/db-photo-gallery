@@ -9,7 +9,7 @@
   &__main {
     background-color: var(--main-bg);
     color: var(--main-color);
-    overflow: auto;
+    overflow-y: auto;
     width: 100%;
   }
 }

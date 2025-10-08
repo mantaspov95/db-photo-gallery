@@ -1,0 +1,19 @@
+@use '/src/scss/utils/utils.scss' as utils;
+
+.gallery-picture {
+  padding: utils.rem(15);
+
+  &--landscape {
+    grid-row: span 18;
+  }
+
+  &--portrait {
+    grid-row: span 36;
+  }
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+  }
+}

@@ -12,7 +12,7 @@ import GalleryPicture from '../GalleryPicture';
 const cx = classNames.bind(styles);
 
 const GalleryHomeContent = (): ReactElement[] | null => {
-  const { data } = useGetPhotosList(1, PICTURES_PER_PAGE); // TODO - to change props with pagination/infinite scroll values
+  const { data } = useGetPhotosList(2, PICTURES_PER_PAGE); // TODO - to change props with pagination/infinite scroll values. using page 2 because page 1 is only landscape pictures and masonry is not visible
 
   return data && data.length > 0 ? data.map((item) => <GalleryPicture key={item.id} apiItem={item} />) : null;
 };

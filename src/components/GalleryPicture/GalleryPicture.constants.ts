@@ -1,0 +1,1 @@
+export const GALLERY_PICTURE_REDUCED_WIDTH = 500;

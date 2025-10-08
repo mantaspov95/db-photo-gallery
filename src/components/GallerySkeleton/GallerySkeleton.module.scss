@@ -2,7 +2,14 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
 .gallery-skeleton {
-  height: utils.rem(340);
-  width: utils.rem(270);
-  @include mixins.skeleton-animation();
+  grid-row: span 36;
+  padding: utils.rem(15);
+
+  &__item {
+    @include mixins.skeleton-animation();
+
+    height: 100%;
+    min-height: utils.rem(330);
+    width: 100%;
+  }
 }

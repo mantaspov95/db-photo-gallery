@@ -3,6 +3,7 @@ export const openModal = (dialog: HTMLDialogElement | null): void => {
     dialog.showModal();
   }
 };
+
 export const closeModal = (dialog: HTMLDialogElement | null): void => {
   dialog?.close();
 };

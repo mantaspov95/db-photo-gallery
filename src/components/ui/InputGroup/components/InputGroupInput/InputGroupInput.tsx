@@ -9,6 +9,7 @@ type InputGroupInputProps = InputHTMLAttributes<HTMLInputElement>;
 
 const InputGroupInput = ({ ...restProps }: InputGroupInputProps): ReactElement => {
   const { isError } = useInputGroup();
+
   return (
     <input
       className={cx('input-group-input', {

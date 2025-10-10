@@ -25,6 +25,7 @@ const Footer = (): ReactElement => {
           <ul className={cx('footer')} role="menubar">
             {footerOptions.map((item) => {
               const Icon = item.icon;
+
               return (
                 <li key={item.name} aria-label={item.title} role="menuitem">
                   <Button type="button" variant="footer" title={item.title} onClick={item.onClick}>

@@ -8,6 +8,7 @@ const useModal = (): ModalContextType => {
   if (!context) {
     throw new Error('useModal must be used within ModalContext.Provider');
   }
+
   return context;
 };
 

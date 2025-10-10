@@ -6,3 +6,8 @@ export type GalleryPictureApiItem = {
   url: string;
   download_url: string;
 };
+
+export type GalleryPictureApiResult = {
+  pageParams: number[];
+  pages: GalleryPictureApiItem[][];
+};

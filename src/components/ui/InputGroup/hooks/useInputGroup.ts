@@ -8,6 +8,7 @@ const useInputGroup = (): InputGroupContextProps => {
   if (!context) {
     throw new Error('useInputGroup must be used within InputGroupContext.Provider');
   }
+
   return context;
 };
 

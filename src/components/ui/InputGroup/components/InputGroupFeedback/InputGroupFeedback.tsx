@@ -9,6 +9,7 @@ type InputGroupFeedbackProps = Omit<HTMLAttributes<HTMLSpanElement>, 'className'
 
 const InputGroupFeedback = ({ children, ...restProps }: InputGroupFeedbackProps): ReactElement => {
   const { isError } = useInputGroup();
+
   return (
     <span
       {...restProps}

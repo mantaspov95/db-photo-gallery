@@ -3,13 +3,14 @@
 .app-wrapper {
   display: flex;
   flex-direction: row;
-  height: 100svh;
-  width: 100vw;
+  max-width: 100%;
+  min-height: 100svh;
+  width: 100%;
 
   &__main {
     background-color: var(--main-bg);
     color: var(--main-color);
-    overflow-y: auto;
+    padding-left: $sidenav-width;
     width: 100%;
   }
 }

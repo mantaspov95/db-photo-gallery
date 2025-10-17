@@ -1,6 +1,8 @@
 import type { ButtonHTMLAttributes, ReactElement } from 'react';
 import classNames from 'classnames/bind';
 import CloseIcon from '@assets/icon-close.svg?react';
+import FavouriteIcon from '@assets/icon-heart.svg?react';
+
 import styles from './Button.module.scss';
 import type { ButtonVariant } from './Button.types';
 
@@ -21,6 +23,7 @@ const Button = ({
 }: ButtonProps): ReactElement => (
   <button {...restProps} className={cx('button', `button--${variant}`, className)} type={type}>
     {variant === 'close' && !children && <CloseIcon className={cx('button__close-icon')} />}
+    {variant === 'favourite' && !children && <FavouriteIcon className={cx('button__close-icon')} />}
     {children}
   </button>
 );

@@ -44,4 +44,16 @@
     height: utils.rem(24);
     width: utils.rem(24);
   }
+
+  &--favourite {
+    $bg: $color-primary;
+
+    color: $color-white;
+    padding: utils.rem(12) utils.rem(32);
+
+    @include button-bg-hover($bg);
+    &:active {
+      background-color: $bg;
+    }
+  }
 }

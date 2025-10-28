@@ -12,6 +12,7 @@ type ModalBodyProps = {
 
 const ModalBody = ({ className, children }: ModalBodyProps): ReactElement => {
   const { close } = useModal();
+
   return (
     <div className={cx('modal-body', className)}>
       {children}

@@ -1,17 +1,13 @@
-import { useSuspenseQuery, type UseSuspenseQueryResult } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery, type UseSuspenseInfiniteQueryResult } from '@tanstack/react-query';
 import { PICTURES_PER_PAGE } from '@constants/shared.constants';
 import { getPhotosListApiUrl } from '../components/GalleryHome/GalleryHome.logic';
-import type { GalleryPictureApiItem } from './useGallery.types';
+import type { GalleryPictureApiResult } from './useGallery.types';
 
-export const useGetPhotosList = (
-  page = 1,
-  limit = PICTURES_PER_PAGE
-): UseSuspenseQueryResult<GalleryPictureApiItem[], Error> => {
-  const url = getPhotosListApiUrl(page, limit);
-
-  return useSuspenseQuery({
-    queryKey: ['gallery', 'photos', page, limit],
-    queryFn: async () => {
+export const useGetPhotosList = (): UseSuspenseInfiniteQueryResult<GalleryPictureApiResult, Error> =>
+  useSuspenseInfiniteQuery({
+    queryKey: ['gallery', 'photos'],
+    queryFn: async ({ pageParam }) => {
+      const url = getPhotosListApiUrl(pageParam, PICTURES_PER_PAGE);
       const response = await fetch(url);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -20,5 +16,12 @@ export const useGetPhotosList = (
 
       return data;
     },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.length < PICTURES_PER_PAGE) {
+        return undefined;
+      }
+
+      return allPages.length + 1;
+    },
   });
-};

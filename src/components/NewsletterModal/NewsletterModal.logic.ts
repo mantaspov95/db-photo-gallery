@@ -15,6 +15,7 @@ const validateName: NewsletterValidation = (value) => (value ? null : ERROR_MESS
 
 const validateEmail: NewsletterValidation = (value) => {
   if (!value) return ERROR_MESSAGE_REQUIRED;
+
   return NEWSLETTER_EMAIL_REGEX.test(value) ? null : ERROR_MESSAGE_EMAIL_INVALID;
 };
 
@@ -28,6 +29,7 @@ export const validateNewsletterForm = (formData: NewsletterFormData): Newsletter
     const validationRules = getNewsletterValidationRules();
     const validationFn = validationRules[key];
     const errorValue = validationFn(formData[key]);
+
     return { ...errors, [key]: errorValue };
   }, {} as NewsletterFormErrors);
 

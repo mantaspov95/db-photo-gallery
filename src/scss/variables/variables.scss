@@ -1,3 +1,5 @@
+@use '/src/scss/utils/utils.scss' as utils;
+
 // main colors
 $color-primary: #118dba;
 $color-white: #fff;
@@ -16,3 +18,4 @@ $bg-blur-20: blur(20px);
 $screen-size-sm: 480px; // mobile screen width
 
 $color-text-error: $color-red-100;
+$sidenav-width: utils.rem(90);

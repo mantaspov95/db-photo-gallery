@@ -34,7 +34,7 @@ const GalleryHomeContent = (): ReactElement | null => {
       {photos.map((item) => (
         <GalleryPicture key={item.id} apiItem={item} />
       ))}
-      {isFetchingNextPage ? <GallerySkeleton /> : <div ref={sentinelRef} />}
+      {isFetchingNextPage ? <GallerySkeleton /> : <div ref={sentinelRef} aria-hidden="true" />}
     </>
   );
 };

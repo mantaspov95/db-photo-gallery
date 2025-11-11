@@ -1,25 +1,15 @@
 import classNames from 'classnames/bind';
-import { useEffect, useMemo, useRef, type ReactElement } from 'react';
+import { useEffect, useRef, type ReactElement } from 'react';
 import styles from './Modal.module.scss';
-import ModalContext from './context/ModalContext';
 import ModalBody from './components/ModalBody';
 import { closeModal, openModal } from './Modal.logic';
 import type { ModalProps } from './Modal.types';
+import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
 const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElement => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const contextValue = useMemo(() => {
-    const dialog = dialogRef?.current;
-
-    return {
-      close: () => {
-        closeModal(dialog);
-      },
-    };
-  }, []);
 
   useEffect(() => {
     const dialog = dialogRef?.current;
@@ -66,7 +56,14 @@ const Modal = ({ isOpen, onClose, children, ...props }: ModalProps): ReactElemen
       aria-label={props['aria-label']}
       aria-describedby={props['aria-describedby']}
     >
-      <ModalContext.Provider value={contextValue}>{children}</ModalContext.Provider>
+      <Button
+        type="button"
+        variant="close"
+        onClick={onClose}
+        className={cx('modal__close-button')}
+        aria-label="Close modal"
+      />
+      {children}
     </dialog>
   );
 };

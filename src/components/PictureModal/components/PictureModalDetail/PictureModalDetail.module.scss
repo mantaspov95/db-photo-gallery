@@ -1,0 +1,23 @@
+@use '/src/scss/variables/variables.scss' as *;
+@use '/src/scss/utils/utils.scss' as utils;
+
+.picture-modal-detail {
+  display: flex;
+  flex-direction: column;
+  gap: utils.rem(4);
+  &__label {
+    font-size: utils.rem(12);
+    color: $color-gray-600;
+  }
+  &__value {
+    font-size: utils.rem(16);
+    color: $color-white;
+    &--author {
+      font-size: utils.rem(24);
+      color: $color-primary;
+    }
+    &--description {
+      font-size: utils.rem(20);
+    }
+  }
+}

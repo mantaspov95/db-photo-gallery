@@ -1,1 +1,1 @@
-export const FAVOURITES_LOCALSTORAGE_NAME = "favourites"
+export const FAVOURITES_LOCALSTORAGE_NAME = 'favourites';

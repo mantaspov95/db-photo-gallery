@@ -10,6 +10,7 @@
 }
 
 @mixin button-active($bg-color) {
+  &.active,
   &:active {
     background-color: rgba($bg-color, 0.6);
   }
@@ -18,6 +19,7 @@
 .button {
   &--close {
     color: $color-gray-500;
+    background-color: transparent;
 
     &:hover {
       color: $color-white;
@@ -47,13 +49,22 @@
 
   &--favourite {
     $bg: $color-primary;
-
     color: $color-white;
-    padding: utils.rem(12) utils.rem(32);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: utils.rem(12);
+    width: utils.rem(40);
+    aspect-ratio: 1 / 1;
 
     @include button-bg-hover($bg);
-    &:active {
+    &:active,
+    &.active {
       background-color: $bg;
     }
+  }
+  &__favourite-icon {
+    height: 100%;
+    width: 100%;
   }
 }

@@ -1,24 +1,32 @@
 import { useState, type PropsWithChildren, type ReactElement, useMemo, useCallback } from 'react';
+import { type GalleryPictureApiItem } from '@hooks/useGallery.types';
 import FavouritesContext from './FavouritesContext';
 import { getInitialFavourites } from './Favourites.logic';
 import { FAVOURITES_LOCALSTORAGE_NAME } from './Favourites.constants';
 
 const FavouritesProvider = ({ children }: PropsWithChildren): ReactElement => {
-  const [favourites, setFavourites] = useState(() => getInitialFavourites());
+  const [favourites, setFavourites] = useState<GalleryPictureApiItem[]>(() => getInitialFavourites());
 
-  const handleFavouritesChange = useCallback((id: number) => {
+  const handleFavouritesChange = useCallback((apiItem: GalleryPictureApiItem) => {
     setFavourites((currentFavourites) => {
-      const newFavourites = currentFavourites.includes(id)
-        ? currentFavourites.filter((num) => num !== id)
-        : [...currentFavourites, id];
+      const valueExists = currentFavourites.find((item) => item.id === apiItem.id);
 
-      localStorage.setItem(FAVOURITES_LOCALSTORAGE_NAME, newFavourites.join(','));
+      const newFavourites = valueExists
+        ? currentFavourites.filter((item) => item.id !== apiItem.id)
+        : [...currentFavourites, apiItem];
+
+      localStorage.setItem(FAVOURITES_LOCALSTORAGE_NAME, JSON.stringify(newFavourites));
 
       return newFavourites;
     });
   }, []);
 
-  const contextValue = useMemo(() => ({ handleFavouritesChange, favourites }), [handleFavouritesChange, favourites]);
+  const getIsFavourite = useCallback((id: string): boolean => favourites.some((item) => item.id === id), [favourites]);
+
+  const contextValue = useMemo(
+    () => ({ handleFavouritesChange, favourites, getIsFavourite }),
+    [handleFavouritesChange, favourites, getIsFavourite]
+  );
 
   return <FavouritesContext.Provider value={contextValue}>{children}</FavouritesContext.Provider>;
 };

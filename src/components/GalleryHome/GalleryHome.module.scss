@@ -5,7 +5,7 @@
   grid-auto-rows: utils.rem(10);
   grid-template-columns: repeat(auto-fill, minmax(utils.rem(270), 1fr));
   padding: utils.rem(15);
-
+  
   @media (width <= 670px) {
     grid-auto-rows: auto;
     grid-template-columns: 1fr;

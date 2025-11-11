@@ -10,7 +10,9 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
-    "plugin:lodash/recommended"
+    "plugin:lodash/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest-formatting/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "ignorePatterns": ["src/graphql"],
@@ -19,7 +21,14 @@
     "sourceType": "module",
     "project": "./tsconfig.app.json"
   },
-  "plugins": ["@typescript-eslint", "react", "@typescript-eslint", "import"],
+  "plugins": [
+    "@typescript-eslint",
+    "react",
+    "@typescript-eslint",
+    "import",
+    "jest-formatting",
+    "jest"
+  ],
   "settings": {
     "react": {
       "version": "detect"

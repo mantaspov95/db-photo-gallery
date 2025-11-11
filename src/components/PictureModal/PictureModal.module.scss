@@ -1,0 +1,59 @@
+@use '/src/scss/utils/utils.scss' as utils;
+@use '/src/scss/variables/variables.scss' as *;
+
+$modal-spacing: utils.rem(30);
+
+.picture-modal {
+  display: flex;
+  flex-direction: row;
+  max-height: 100%;
+  height: utils.rem(714);
+  align-items: stretch;
+  width: utils.rem(1134);
+  overflow: auto;
+
+  @media (width <= 1300px) {
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+  }
+  &__photo {
+    max-width: utils.rem(567);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-gray-150;
+    img {
+      max-height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+    }
+  }
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  &__details {
+    max-width: utils.rem(567);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    gap: $modal-spacing;
+  }
+
+  &__favourite-button {
+    width: utils.rem(50);
+  }
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $modal-spacing;
+  }
+  &__separator {
+    border-top: 1px solid $color-gray-500;
+  }
+}

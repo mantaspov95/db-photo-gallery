@@ -5,14 +5,14 @@ describe('PictureModalDetail', () => {
   const label = 'hello';
   const value = 'world';
 
-  it('renders label and value', () => {
+  test('renders label and value', () => {
     render(<PictureModalDetail label={label} value={value} />);
 
     expect(screen.getByText(label)).toBeInTheDocument();
     expect(screen.getByText(value)).toBeInTheDocument();
   });
 
-  it('label and value aria-labelledby relation', () => {
+  test('label and value aria-labelledby relation', () => {
     render(<PictureModalDetail label={label} value={value} />);
     const labelResult = screen.getByText(label);
     const valueElement = screen.getByLabelText(label);
@@ -24,14 +24,14 @@ describe('PictureModalDetail', () => {
     expect(valueElement).toHaveTextContent(value);
   });
 
-  it('isAuthor boolean defines classname', () => {
+  test('isAuthor boolean defines classname', () => {
     render(<PictureModalDetail label={label} value={value} isAuthor />);
     const valueResult = screen.getByText(value);
 
     expect(valueResult).toHaveClass('picture-modal-detail__value--author');
   });
 
-  it('isDescription boolean defines classname', () => {
+  test('isDescription boolean defines classname', () => {
     render(<PictureModalDetail label={label} value={value} isDescription />);
     const valueResult = screen.getByText(value);
 

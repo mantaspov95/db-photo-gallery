@@ -4,6 +4,7 @@ const { compilerOptions } = require('./tsconfig.app.json');
 export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  resolver: '<rootDir>/jest.resolver.ts',
   transform: {
     '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: 'tsconfig.app.json', useESM: true }],
     '^.+\\.svg$': '<rootDir>/jest.svgTransform.ts',

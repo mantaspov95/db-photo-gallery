@@ -1,8 +1,8 @@
 import { type ReactElement } from 'react';
 import classNames from 'classnames/bind';
-import { ReactComponent as FavoutireIcon } from '@assets/icon-heart-filled.svg';
-import { ReactComponent as ViewIcon } from '@assets/icon-view.svg';
-import { ReactComponent as DownloadIcon } from '@assets/icon-download.svg';
+import FavouriteIcon from '@assets/icon-heart-filled.svg?react';
+import ViewIcon from '@assets/icon-view.svg?react';
+import DownloadIcon from '@assets/icon-download.svg?react';
 import styles from './PictureModalCounters.module.scss';
 
 const cx = classNames.bind(styles);
@@ -28,7 +28,7 @@ const PictureModalCounters = ({
   return (
     <div className={cx('picture-modal-counters')}>
       <div className={cx('picture-modal-counters__item')} aria-label={favouritesLabel}>
-        <FavoutireIcon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
+        <FavouriteIcon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
         <span aria-hidden="true">{favouriteCountFormatted}</span>
       </div>
       <div className={cx('picture-modal-counters__item')} aria-label={downloadsLabel}>

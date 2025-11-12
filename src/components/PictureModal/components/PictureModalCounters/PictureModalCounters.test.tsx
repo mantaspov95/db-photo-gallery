@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import PictureModalCounters from './PictureModalCounters';
 
 describe('PictureModalCounters', () => {
-  it('renders all counters with correct values and aria-labels', () => {
+  test('renders all counters with correct values and aria-labels', () => {
     const downloadCount = 1000;
     const favouriteCount = 1234567;
     const viewCount = 999;

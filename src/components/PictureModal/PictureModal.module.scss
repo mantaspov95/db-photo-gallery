@@ -4,55 +4,61 @@
 $modal-spacing: utils.rem(30);
 
 .picture-modal {
+  align-items: stretch;
   display: flex;
   flex-direction: row;
-  max-height: 100%;
   height: utils.rem(714);
-  align-items: stretch;
-  width: utils.rem(1134);
+  max-height: 100%;
   overflow: auto;
+  width: utils.rem(1134);
 
   @media (width <= 1300px) {
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: column;
     width: auto;
   }
+
   &__photo {
-    max-width: utils.rem(567);
-    flex-grow: 1;
-    display: flex;
     align-items: center;
-    justify-content: center;
     background-color: $color-gray-150;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    max-width: utils.rem(567);
+
     img {
       max-height: 100%;
-      object-fit: cover;
       max-width: 100%;
+      object-fit: cover;
     }
   }
+
   &__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
+
   &__details {
-    max-width: utils.rem(567);
-    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
     gap: $modal-spacing;
+    max-width: utils.rem(567);
+    width: 100%;
   }
 
   &__favourite-button {
     width: utils.rem(50);
   }
+
   &__footer {
-    margin-top: auto;
     display: flex;
     flex-direction: column;
     gap: $modal-spacing;
+    margin-top: auto;
   }
+
   &__separator {
     border-top: 1px solid $color-gray-500;
   }

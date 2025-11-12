@@ -18,8 +18,8 @@
 
 .button {
   &--close {
-    color: $color-gray-500;
     background-color: transparent;
+    color: $color-gray-500;
 
     &:hover {
       color: $color-white;
@@ -49,20 +49,23 @@
 
   &--favourite {
     $bg: $color-primary;
+
+    align-items: center;
+    aspect-ratio: 1 / 1;
     color: $color-white;
     display: flex;
-    align-items: center;
     justify-content: center;
     padding: utils.rem(12);
     width: utils.rem(40);
-    aspect-ratio: 1 / 1;
 
     @include button-bg-hover($bg);
+
     &:active,
     &.active {
       background-color: $bg;
     }
   }
+
   &__favourite-icon {
     height: 100%;
     width: 100%;

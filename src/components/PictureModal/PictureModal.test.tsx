@@ -12,7 +12,7 @@ jest.mock('./PictureModal.logic', () => ({
 }));
 
 describe('PictureModal', () => {
-  const apiItem: GalleryPictureApiItem = {
+  const API_ITEM: GalleryPictureApiItem = {
     id: '35',
     author: 'John Doe',
     width: 2758,
@@ -20,9 +20,9 @@ describe('PictureModal', () => {
     url: 'https://unsplash.com/photos/znM0ujn2RUA',
     download_url: 'https://picsum.photos/id/35/2758/3622',
   };
-  const DUMMY_COUNT = 1000;
+  const DETAIL_COUNT = 1000;
 
-  const modalProps = { isOpen: true, onClose: () => {}, apiItem };
+  const modalProps = { isOpen: true, onClose: () => {}, apiItem: API_ITEM };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -30,10 +30,10 @@ describe('PictureModal', () => {
     HTMLDialogElement.prototype.close = jest.fn();
     Storage.prototype.getItem = jest.fn().mockReturnValue('[]');
     Storage.prototype.setItem = jest.fn();
-    (getPictureModalCounter as jest.Mock).mockReturnValue(DUMMY_COUNT);
+    (getPictureModalCounter as jest.Mock).mockReturnValue(DETAIL_COUNT);
   });
 
-  test('shows image with right class', () => {
+  it('shows image with right class', () => {
     const { container } = renderWithProviders(<PictureModal {...modalProps} />);
     const imageWrapperElements = container.getElementsByClassName('picture-modal__photo');
 
@@ -42,24 +42,24 @@ describe('PictureModal', () => {
     const img = imageWrapperElements?.[0].querySelector('img');
 
     expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', apiItem.download_url);
+    expect(img).toHaveAttribute('src', API_ITEM.download_url);
   });
 
-  test('renders details', () => {
+  it('renders details', () => {
     renderWithProviders(<PictureModal {...modalProps} />);
 
     const authorElement = screen.getByLabelText('author');
     const descriptionElement = screen.getByLabelText('description');
     const resolutionElement = screen.getByLabelText('resolution');
 
-    expect(authorElement).toHaveTextContent(apiItem.author);
+    expect(authorElement).toHaveTextContent(API_ITEM.author);
     expect(descriptionElement).toHaveTextContent(PICTURE_MODAL_DESCRIPTION);
-    expect(resolutionElement).toHaveTextContent(`${apiItem.width} x ${apiItem.height}`);
+    expect(resolutionElement).toHaveTextContent(`${API_ITEM.width} x ${API_ITEM.height}`);
   });
 
-  test('renders counters with correct values', () => {
+  it('renders counters with correct values', () => {
     renderWithProviders(<PictureModal {...modalProps} />);
-    const countFormatted = DUMMY_COUNT.toLocaleString();
+    const countFormatted = DETAIL_COUNT.toLocaleString();
     const favouritesCounterElement = screen.getByLabelText(/favourites/i);
     const downloadsCounterElement = screen.getByLabelText(/downloads/i);
     const viewsCounterElement = screen.getByLabelText(/views/i);
@@ -73,7 +73,7 @@ describe('PictureModal', () => {
     expect(viewsAriaLabel).toBe(`${countFormatted} views`);
   });
 
-  test('click favourites button trigger function and increment coutner', async () => {
+  it('click favourites button trigger function and increment coutner', async () => {
     renderWithProviders(<PictureModal {...modalProps} />);
 
     const favouriteButton = screen.getByTitle('Add to favourites');
@@ -81,7 +81,7 @@ describe('PictureModal', () => {
     const ariaLabel = favouritesCounterElement.getAttribute('aria-label');
     const countString = ariaLabel?.replace(/favourites/i, '').replace(/\D/g, '');
     const favouriteCount = Number(countString);
-    expect(favouriteCount).toBe(DUMMY_COUNT);
+    expect(favouriteCount).toBe(DETAIL_COUNT);
 
     fireEvent.click(favouriteButton);
 
@@ -93,6 +93,6 @@ describe('PictureModal', () => {
     const updatedAriaLabel = updatedFavouritesCounterElement.getAttribute('aria-label');
     const updatedCountString = updatedAriaLabel?.replace(/favourites/i, '').replace(/\D/g, '');
     const updatedFavouriteCount = Number(updatedCountString);
-    expect(updatedFavouriteCount).toBe(DUMMY_COUNT + 1);
+    expect(updatedFavouriteCount).toBe(DETAIL_COUNT + 1);
   });
 });

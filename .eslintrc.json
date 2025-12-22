@@ -21,14 +21,7 @@
     "sourceType": "module",
     "project": "./tsconfig.app.json"
   },
-  "plugins": [
-    "@typescript-eslint",
-    "react",
-    "@typescript-eslint",
-    "import",
-    "jest-formatting",
-    "jest"
-  ],
+  "plugins": ["@typescript-eslint", "react", "import", "jest-formatting", "jest"],
   "settings": {
     "react": {
       "version": "detect"

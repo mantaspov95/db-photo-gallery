@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { getPictureAlt } from './Picture.logic';
+import { getPictureAlt } from '@/utils';
 
 type PictureProps = {
   src: string;

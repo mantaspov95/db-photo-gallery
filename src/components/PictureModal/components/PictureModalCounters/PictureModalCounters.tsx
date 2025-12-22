@@ -4,6 +4,8 @@ import FavouriteIcon from '@assets/icon-heart-filled.svg?react';
 import ViewIcon from '@assets/icon-view.svg?react';
 import DownloadIcon from '@assets/icon-download.svg?react';
 import styles from './PictureModalCounters.module.scss';
+import { PictureModalCounterConfig } from './PictureModalCounters.types';
+import { PictureModalCountersLabels } from './PictureModalCounters.enums';
 
 const cx = classNames.bind(styles);
 
@@ -18,28 +20,28 @@ const PictureModalCounters = ({
   favouriteCount,
   viewCount,
 }: PictureModalCountersProps): ReactElement => {
-  const downloadCountFormatted = downloadCount.toLocaleString();
-  const favouriteCountFormatted = favouriteCount.toLocaleString();
-  const viewCountFormatted = viewCount.toLocaleString();
-  const downloadsLabel = `${downloadCountFormatted} downloads`;
-  const favouritesLabel = `${favouriteCountFormatted} favourites`;
-  const viewsLabel = `${viewCountFormatted} views`;
+  const counters: PictureModalCounterConfig[] = [
+    { icon: FavouriteIcon, value: favouriteCount, label: PictureModalCountersLabels.FAVOURITES },
+    { icon: DownloadIcon, value: downloadCount, label: PictureModalCountersLabels.DOWNLOADS },
+    { icon: ViewIcon, value: viewCount, label: PictureModalCountersLabels.VIEWS },
+  ];
 
   return (
-    <div className={cx('picture-modal-counters')}>
-      <div className={cx('picture-modal-counters__item')} aria-label={favouritesLabel}>
-        <FavouriteIcon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
-        <span aria-hidden="true">{favouriteCountFormatted}</span>
-      </div>
-      <div className={cx('picture-modal-counters__item')} aria-label={downloadsLabel}>
-        <DownloadIcon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
-        <span aria-hidden="true">{downloadCountFormatted}</span>
-      </div>
-      <div className={cx('picture-modal-counters__item')} aria-label={viewsLabel}>
-        <ViewIcon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
-        <span aria-hidden="true">{viewCountFormatted}</span>
-      </div>
-    </div>
+    <dl className={cx('picture-modal-counters')}>
+      {counters.map(({ icon: Icon, value, label }) => {
+        const formatted = value.toLocaleString();
+
+        return (
+          <div key={label}>
+            <dt className={cx('sr-only')}>{label}</dt>
+            <dd className={cx('picture-modal-counters__item')}>
+              <Icon className={cx('picture-modal-counters__icon')} aria-hidden="true" />
+              <span>{formatted}</span>
+            </dd>
+          </div>
+        );
+      })}
+    </dl>
   );
 };
 

@@ -9,7 +9,7 @@ const FavouritesProvider = ({ children }: PropsWithChildren): ReactElement => {
 
   const handleFavouritesChange = useCallback((apiItem: GalleryPictureApiItem) => {
     setFavourites((currentFavourites) => {
-      const valueExists = currentFavourites.find((item) => item.id === apiItem.id);
+      const valueExists = currentFavourites.some((item) => item.id === apiItem.id);
 
       const newFavourites = valueExists
         ? currentFavourites.filter((item) => item.id !== apiItem.id)

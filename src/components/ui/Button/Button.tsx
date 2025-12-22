@@ -22,7 +22,7 @@ const Button = ({
   className,
   ...restProps
 }: ButtonProps): ReactElement => {
-  const favouriteTitle = variant === 'favourite' ? getButtonFavouriteTitle(!!isActive) : undefined;
+  const favouriteTitle = variant.includes('favourite') ? getButtonFavouriteTitle(!!isActive) : undefined;
 
   return (
     <button

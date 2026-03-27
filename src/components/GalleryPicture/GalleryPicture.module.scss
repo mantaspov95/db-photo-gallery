@@ -1,7 +1,15 @@
 @use '/src/scss/utils/utils.scss' as utils;
 
 .gallery-picture {
-  padding: utils.rem(15);
+  margin: utils.rem(15);
+  position: relative;
+  transition: transform 0.2s;
+
+  &__button {
+    height: 100%;
+    padding: 0;
+    width: 100%;
+  }
 
   &--landscape {
     grid-row: span 18;
@@ -15,5 +23,16 @@
     height: 100%;
     object-fit: cover;
     width: 100%;
+  }
+
+  &__favourite-block {
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &--visible {
+      opacity: 1;
+    }
   }
 }

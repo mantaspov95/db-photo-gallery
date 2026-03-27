@@ -1,3 +1,4 @@
+import type { GalleryPictureApiItem } from '@hooks/useGallery.types';
 import { GALLERY_PICTURE_REDUCED_WIDTH } from './GalleryPicture.constants';
 import { GALLERY_PICTURE_VARIANTS } from './GalleryPicture.enums';
 import type { GalleryPictureVariant } from './GalleryPicture.types';
@@ -14,3 +15,6 @@ export const getGalleryPictureReducedImageUrl = (id: string, width: number, heig
 
   return `https://picsum.photos/id/${id}/${GALLERY_PICTURE_REDUCED_WIDTH}/${heightReduced}`;
 };
+
+export const getGalleryPictureIsFavourite = (favouriteItems: GalleryPictureApiItem[], id: string): boolean =>
+  favouriteItems.some((item) => item.id === id);

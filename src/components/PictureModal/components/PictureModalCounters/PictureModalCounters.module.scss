@@ -1,0 +1,19 @@
+@use '/src/scss/utils/utils.scss' as utils;
+
+.picture-modal-counters {
+  display: flex;
+  flex-flow: row wrap;
+  gap: utils.rem(60);
+
+  &__item {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: utils.rem(10);
+  }
+
+  &__icon {
+    height: utils.rem(24);
+    width: utils.rem(24);
+  }
+}

@@ -10,6 +10,7 @@
 }
 
 @mixin button-active($bg-color) {
+  &.active,
   &:active {
     background-color: rgba($bg-color, 0.6);
   }
@@ -17,6 +18,7 @@
 
 .button {
   &--close {
+    background-color: transparent;
     color: $color-gray-500;
 
     &:hover {
@@ -43,5 +45,49 @@
   &__close-icon {
     height: utils.rem(24);
     width: utils.rem(24);
+  }
+
+  &--favourite {
+    $bg: $color-primary;
+
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    color: $color-white;
+    display: flex;
+    justify-content: center;
+    padding: utils.rem(12);
+    width: utils.rem(50);
+
+    @include button-bg-hover($bg);
+
+    &:active,
+    &.active {
+      background-color: $bg;
+    }
+  }
+
+  &--favourite-picture {
+    $bg: $color-primary;
+
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    background-color: rgb(0 0 0 / 30%);
+    color: $color-white;
+    display: flex;
+    justify-content: center;
+    padding: utils.rem(12);
+    width: utils.rem(40);
+
+    @include button-bg-hover($bg);
+
+    &:active,
+    &.active {
+      background-color: $bg;
+    }
+  }
+
+  &__favourite-icon {
+    height: 100%;
+    width: 100%;
   }
 }
